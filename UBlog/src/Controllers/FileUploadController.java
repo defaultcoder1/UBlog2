@@ -11,7 +11,7 @@ public class FileUploadController {
 	
 	public static boolean processFile(String path, FileItemStream item) {
 		try {
-			File savedFile = new File("C:\\Users\\GiorgiTS\\git\\UBlog\\UBlog\\WebContent\\user_uploads\\" + item.getName());
+			File savedFile = new File("C:\\Users\\GiorgiTS\\git\\UBlog2\\UBlog\\WebContent\\user_uploads\\" + item.getName());
 			FileOutputStream fos = new FileOutputStream(savedFile);
 			InputStream is = item.openStream();
 			int x = 0;
