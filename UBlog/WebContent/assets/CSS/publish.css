@@ -1,0 +1,54 @@
+@CHARSET "UTF-8";
+
+#gallery_pop {position:absolute; margin-top:20px; width:900px; height:560px; border:none; z-index:1; overflow:hidden;
+	display:none;}
+
+#editor_container {width:100%; padding-top:25px;}
+#editor_container_t {width:850px; padding:30px; background-color:#F5F5F5; box-shadow:0px 0px 10px #FFF;}
+#post_title {width:560px;}
+#post_title input {width:545px; padding:7px; font-family:arial,sans-serif; font-size:12px;
+	color:#222; border:1px solid #CCC; border-radius:2px; outline-color:#507EAD;}
+#post_buttons {text-align:right;}
+#publish_button {font-family:arial,sans-serif; font-size:12px; font-weight:bold; color:#FFF; border:1px solid #48749D;
+	padding:8px; padding-left:20px; padding-right:20px; border-radius:2px; cursor:pointer;
+	background-image:-webkit-linear-gradient(top, #507EAD, #48749D);}
+#publish_button:hover {background-image:-webkit-linear-gradient(top, #48749D, #507EAD);}
+#publish_button:active {box-shadow:inset 0px 2px 3px #555;}
+#cancel_button {font-family:arial,sans-serif; font-size:12px; font-weight:bold; color:#507EAD; border:1px solid #CCC;
+	padding:8px; padding-left:20px; padding-right:20px; border-radius:2px; cursor:pointer;
+	background-image:-webkit-linear-gradient(top, #F5F5F5, #F0F0F0);}
+#cancel_button:hover {background-image:-webkit-linear-gradient(top, #F0F0F0, #F5F5F5);}
+#cancel_button:active {box-shadow:inset 0px 2px 3px #555;}
+#open_gallery {font-family:arial,sans-serif; font-size:12px; font-weight:bold; color:#507EAD; border:1px solid #CCC;
+	padding:8px; padding-left:20px; padding-right:20px; border-radius:2px; cursor:pointer;
+	background-image:-webkit-linear-gradient(top, #F5F5F5, #F0F0F0); width:190px;}
+#open_gallery:hover {background-image:-webkit-linear-gradient(top, #F0F0F0, #F5F5F5);}
+#open_gallery:active {box-shadow:inset 0px 2px 3px #555;}
+#WYSIWYG_controls {padding-top:10px; overflow:auto;}
+.wysiwyg_button_container {float:left; width:21px; height:21px; padding:4px; border:1px solid #F5F5F5;
+	margin-left:6px;}
+.wysiwyg_button_container:hover {border-color:#DDD; box-shadow:0px 0px 3px #CCC;}
+.wysiwyg_button_container:active {box-shadow:inset 0px 0px 3px #CCC;}
+.wysiwyg_button {width:21px; height:21px; background-image:url(/UBlog/assets/IMG/wysiwyg.png);}
+#W_bold div {background-position:0px 0px;}
+#W_italic div {background-position:-21px 0px;}
+#W_underline div {background-position:-42px 0px;}
+#W_font div {background-position:-63px 0px;}
+#W_size div {background-position:-84px 0px;}
+#W_textcolor div {background-position:-105px 0px;}
+#W_bgcolor div {background-position:-126px 0px;}
+#W_image div {background-position:-378px 0px;}
+#W_link div {background-position:-147px 0px;}
+#W_olist div {background-position:-168px 0px;}
+#W_ulist div {background-position:-189px 0px;}
+#W_indentless div {background-position:-210px 0px;}
+#W_indentmore div {background-position:-231px 0px;}
+#W_aleft div {background-position:-273px 0px;}
+#W_acenter div {background-position:-294px 0px;}
+#W_aright div {background-position:-315px 0px;}
+#image_tags {text-align:right; vertical-align:top; padding-top:10px;}
+#post_image_box {width:185px; height:150px; margin-left:40px; border:1px solid #CCC;
+	background-image:url(/UBlog/assets/IMG/trans_blue.png);}
+#post_image {max-width:100%; max-height:100%; display:block; margin:0 auto;}
+#editor_area_container {padding-top:10px;}
+#editor_area {width:100%; height:400px; background-color:#FFF; border:1px solid #CCC; border-radius:2px;}

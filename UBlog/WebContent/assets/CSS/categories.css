@@ -1,0 +1,8 @@
+@CHARSET "UTF-8";
+
+#categories {width:100%; padding-top:25px; padding-bottom:25px;}
+#categories_t {width:100%;}
+.categorie_item {padding:12px; text-align:center; vertical-align:middle; font-size:13px; color:#FFF; cursor:pointer;
+	background-image:url(/UBlog/assets/IMG/body_bg.png);}
+.categorie_item:hover {background-image:none;}
+.categorie_selected {background-image:none;}

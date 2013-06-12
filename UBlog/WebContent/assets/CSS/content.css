@@ -1,0 +1,44 @@
+@CHARSET "UTF-8";
+
+#user_content {width:100%; padding-bottom:25px; background-image:url(/UBlog/assets/IMG/trans_blue.png);}
+#user_info {width:100%; padding-top:25px; padding-bottom:25px;}
+#user_info_t {width:850px;}
+#user_profile_avatar_container {width:600px; background-image:url(/UBlog/assets/IMG/user_profile_bg.png);
+	box-shadow:inset 0px 0px 20px #222; text-align:center; vertical-align:top; position:relative; padding-bottom:50px;}
+#user_subscribers {padding:10px; padding-left:20px; box-shadow:0px 0px 10px #222; cursor:pointer;}
+#user_subscriptions {padding:10px; padding-left:20px; box-shadow:0px 0px 10px #222; cursor:pointer;}
+#user_posts {padding:10px; padding-left:20px; box-shadow:0px 0px 10px #222; cursor:pointer;}
+#activity_log {padding:10px; padding-left:20px; font-family:arial,sans-serif;
+	font-size:16px; color:#FFF; box-shadow:0px 0px 10px #222; cursor:pointer;}
+#subscribers_val {margin:0px; margin-bottom:3px; font-size:20px; color:#FFF;}
+#subscribers_desc {margin:0px; font-size:16px; color:#FFF;}
+#subscriptions_val {margin:0px; margin-bottom:3px; font-size:20px; color:#FFF;}
+#subscriptions_desc {margin:0px; font-size:16px; color:#FFF;}
+#posts_val {margin:0px; margin-bottom:3px; font-size:20px; color:#FFF;}
+#posts_desc {margin:0px; font-size:16px; color:#FFF;}
+#user_profile_avatar {min-width:40px; max-width:80px; min-height:40px; max-height:80px; padding:10px;
+	background-image:url(/UBlog/assets/IMG/trans_white.png); margin-top:15px; border-radius:5px;}
+#user_profile_name {margin:0px; margin-top:20px; font-size:20px; color:#FFF;}
+#user_profile_title {margin:0px; margin-top:30px; font-size:20px; color:#FFF;}
+#additional_navigation {position:absolute; bottom:0px; width:100%;
+	background-image:url(/UBlog/assets/IMG/trans_black_40.png);}
+#additional_navigation_t {width:100%;}
+#additional_notifications_desc {padding:7px; padding-left:10px; padding-right:10px; font-size:15px; color:#FFF;}
+#additional_notifications_val {padding-left:10px; padding-right:10px; font-size:15px; color:#FFF;
+	background-image:-webkit-linear-gradient(top, #507EAD, #4978C6); cursor:pointer;}
+#additional_messages_desc {padding:7px; padding-left:10px; padding-right:10px; font-size:15px; color:#FFF;}
+#additional_messages_val {padding-left:10px; padding-right:10px; font-size:15px; color:#FFF;
+	background-image:-webkit-linear-gradient(top, #507EAD, #4978C6); cursor:pointer;}
+#additional_placeholder {width:200px;}
+#write_new_post {width:120px; padding:7px; padding-left:10px; padding-right:10px; font-size:15px; color:#FFF;
+	border-radius:2px; cursor:pointer;}
+#write_new_post:hover {box-shadow:0px 0px 10px #FFF;}
+#write_new_post:active {box-shadow:inset 0px 0px 10px #FFF;}
+
+
+#feed_filter {width:100%; margin-bottom:25px;}
+#feed_filter_t {width:100%;}
+.feed_filter_buttons {width:120px; text-align:center; padding:12px; font-size:13px; color:#FFF; cursor:pointer;
+	background-image:url(/UBlog/assets/IMG/body_bg.png);}
+.feed_filter_button_selected {background-image:none;}
+.feed_filter_placeholder {background-image:url(/UBlog/assets/IMG/body_bg.png);}

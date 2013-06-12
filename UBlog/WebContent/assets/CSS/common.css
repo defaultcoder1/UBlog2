@@ -1,0 +1,29 @@
+@CHARSET "UTF-8";
+
+html, body {height:100%; margin:0px; background-image:url(/UBlog/assets/IMG/body_bg.png);
+	background-attachment:fixed;}
+
+#main_container {width:900px; margin:0 auto; margin-bottom:50px;}
+#controls {position:fixed; left:0px; top:0px; width:100%; background-image:url(/UBlog/assets/IMG/header_sprite.png);
+	z-index:1;}
+#controls_t {width:900px;}
+#logo_container {padding-top:5px; padding-bottom:5px;}
+#logo {height:30px; display:block; margin:0 auto; cursor:pointer;}
+#search_container {position:relative; width:210px;}
+#search {font-family:Segoe UI,Arial,Verdana,Helvetica,sans-serif; font-size:12px; color:#424242; padding:5px;
+	padding-left:10px; padding-right:30px; border:1px solid #D9D9D9; border-top:1px solid #C9C9C9; width:160px;
+	outline:none; border-radius:2px; background-image:url(/UBlog/assets/IMG/search.png);
+	background-repeat:no-repeat; background-position:176px 5px; background-color:#E0E0E0;
+    -webkit-transition: background-color 0.5s ease;
+    -moz-transition: background-color 0.5s ease;
+    -o-transition: background-color 0.5s ease;
+    transition: background-color 0.5s ease; position:absolute; top:4px;}
+.user_icons {position:relative; width:40px; text-align:center; cursor:pointer;}
+.user_icons img {height:14px;}
+#notifications img {height:16px;}
+#more {width:30px;}
+#more img {height:12px;}
+#user_avatar_container {width:60px; text-align:right; vertical-align:middle;}
+#user_avatar {height:30px; max-width:60px; min-width:30px; border-radius:1px;}
+
+#content {width:100%; padding-bottom:25px; background-image:url(/UBlog/assets/IMG/trans_blue.png);}
