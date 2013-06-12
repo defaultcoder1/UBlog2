@@ -26,14 +26,14 @@
 			<tr>
 				<td id="additional_info" rowspan="2">
 					<div id="user_panel">
-						<img id="user_panel_avatar" src="http://fc02.deviantart.com/fs19/f/2007/291/b/c/Kakashi__s_Mangekyou_Sharingan_by_Santo1989.png" />
-						<p id="user_panel_name" class="calibri_bold">Giorgi Cxondia</p>
+						<img id="user_panel_avatar" src="<%=b.getAuthorImage() %>" />
+						<p id="user_panel_name" class="calibri_bold"><%=b.getAuthorName() + " " + b.getAuthorLastName() %></p>
 					</div>
 				</td>
-				<td id="article_header">title</td>
+				<td id="article_header"><%=b.getTitle() %></td>
 			</tr>
 			<tr>
-				<td id="article_content">content</td>
+				<td id="article_content"><%=b.getContent() %></td>
 			</tr>
 		</table>
 	</div>
