@@ -1,5 +1,6 @@
 package Controllers;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -22,6 +23,18 @@ public class BlogController {
 		this.con = con;
 	}
 	
+	private ArrayList<String> getTags(String blogId){
+		ArrayList<String> arr = new ArrayList<String>();
+		DB db = new DB(this.con, "ublog");
+		Condition c = new Condition(true);
+		c.add("Article_ID", blogId);
+		db.where(c);
+		ResultList rl = db.get("tag_article");
+		for(int i=0;i<rl.size();i++){
+			arr.add(rl.get(i).get("Tag"));
+		}
+		return arr;
+	}
 	public Blog getBlogById(String blogId){
 		DB db = new DB(this.con, "ublog");
 		Condition cnd = new Condition(true);
@@ -36,14 +49,16 @@ public class BlogController {
 		db.where(cnd);
 		rl = db.get("user");
 		Row author = rl.first();
+		ArrayList<String> arr = this.getTags(blogId);
 		Blog newBlog = new Blog(blogId, article.get("User_ID"), article.get("Image"), 
 	article.get("Title"), article.get("Content"), article.get("Date"),
 	alModel.getArticleLikes(blogId),this.getBlogComments(blogId),author.get("FName"),
-	author.get("LName"),author.get("Image"));		
+	author.get("LName"),author.get("Image"),arr,article.get("Category"));		
 		return newBlog;
 	}
 	
-	public String addArticle(String image,String title,String content,String userid){
+	public String addArticle(String image,String title,String content,String userid,
+			String category,ArrayList<String> tags){
 		HashMap<String, String> m = new HashMap<String,String>();
 		m.put("Image", image);
 		m.put("Title", title);
