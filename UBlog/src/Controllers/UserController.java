@@ -29,6 +29,14 @@ public class UserController {
 		User user = new User(userData.get("User_ID"), userData.get("FName"),
 		userData.get("LName"), userData.get("EMail"), userData.get("Password"),
 		userData.get("Image"),userData.get("Blog_Name"));
+		ArrayList<String> arr = this.getSubscribers(userId);
+		for(int i=0;i<arr.size();i++){
+			user.addSubscriber(arr.get(i));
+		}
+		arr = this.getSusbscribed(userId);
+		for(int i=0;i<arr.size();i++){
+			user.addSubscription(arr.get(i));
+		}
 		return user;
 	}
 	
@@ -56,11 +64,9 @@ public class UserController {
 		db.where(cnd);
 		ResultList rl = db.get("subscribe");
 		ArrayList<String> subscribers = new ArrayList<String>();
-		
 		for(int i=0; i<rl.size(); i++) {
 			subscribers.add(rl.get(i).get("Subscriber_ID"));
 		}
-		
 		return subscribers;
 	}
 	
@@ -72,11 +78,9 @@ public class UserController {
 		db.where(cnd);
 		ResultList rl = db.get("subscribe");
 		ArrayList<String> subscribed = new ArrayList<String>();
-		
 		for(int i=0; i<rl.size(); i++) {
 			subscribed.add(rl.get(i).get("Author_ID"));
 		}
-		
 		return subscribed;
 	}
 }
