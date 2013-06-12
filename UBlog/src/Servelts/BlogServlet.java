@@ -34,7 +34,7 @@ public class BlogServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String blogId = request.getParameter("blogid");
+		String blogId = request.getParameter("id");
 		BlogController bc = new BlogController((Connection) ((DBConnector)getServletContext().getAttribute("DBC")).getConnection());
 		request.setAttribute("blog", bc.getBlogById(blogId));
 		RequestDispatcher rd = request.getRequestDispatcher("view_post.jsp");
