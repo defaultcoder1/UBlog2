@@ -22,6 +22,7 @@ public class CommentController {
 		con.add("Comment_ID",commentId);
 		db.where(con);
 		ResultList crl = db.get("comment");
+		db = new DB(this.con, "ublog");
 		con = new Condition(true);
 		con.add("User_ID", crl.first().get("User_ID"));
 		db.where(con);

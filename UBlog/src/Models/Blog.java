@@ -11,7 +11,7 @@ public class Blog extends Readings{
 	private ArrayList<Comment> comments;
 	public Blog(String id, String userId, String image, String title, String content, String date,
 				ArrayList<Like> likes, ArrayList<Comment> comments,String aname,String alname,String aimage){
-		super(id,content,date,userId,null,null,null);
+		super(id,content,date,userId,aname,alname,aimage);
 		this.image = image;
 		this.title = title;
 		this.likes = likes;

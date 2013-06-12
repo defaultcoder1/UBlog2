@@ -6,6 +6,9 @@ public class Author extends Visitor{
 	private String image;
 	public Author(String id,String name,String lname,String image) {
 		super(id);
+		this.name = name;
+		this.image = image;
+		this.lname = lname;
 	}
 	public String getName(){
 		return this.name;

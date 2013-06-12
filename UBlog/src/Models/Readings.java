@@ -24,7 +24,7 @@ public class Readings {
 	public String getAuthorId(){
 		return this.author.getId();
 	}
-	public String ggetAuthorName(){
+	public String getAuthorName(){
 		return this.author.getName();
 	}
 	public String getAuthorLastName(){
