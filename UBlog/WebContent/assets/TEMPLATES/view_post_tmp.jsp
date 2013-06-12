@@ -1,3 +1,4 @@
+<%@page import="Models.Blog"%>
 <style>
 	#view_post {padding-top:25px; width:100%;}
 	#view_post_t {width:850px; height:500px; box-shadow:0px 0px 10px #FFF;}
@@ -11,6 +12,12 @@
 	#user_panel_name {margin:0px; margin-top:15px; font-size:13px; color:#222; text-align:center; padding-right:10px;
 		padding-left:10px; line-height:20px;}
 </style>
+
+
+<%
+	Blog b = (Blog) request.getAttribute("blog");
+%>
+
 
 <div id="content">
 	

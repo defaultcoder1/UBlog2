@@ -17,7 +17,7 @@
 			<table class="article_t" cellpading="0" cellspacing="0" border="0">
 				<tr>
 					<td class="author_avatar" rowspan="2"><img src="/UBlog/assets/IMG/no_avatar.png" /></td>
-					<td class="article_title"><%=blogs.get(i).getTitle() %></td>
+					<td class="article_title"><a href="/UBlog/Blog?id=<%=blogs.get(i).getId() %>"><%=blogs.get(i).getTitle() %></a></td>
 				</tr>
 				<tr><td class="article_date"><%=blogs.get(i).getDate() %></td></tr>
 				<tr>
