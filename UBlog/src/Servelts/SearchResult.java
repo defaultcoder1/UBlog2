@@ -65,7 +65,7 @@ public class SearchResult extends HttpServlet {
 			ResultList rl = db.get("tag_article");
 			BlogController bc = new BlogController((Connection) ((DBConnector)getServletContext().getAttribute("DBC")).getConnection());
 			for(int i=0;i<rl.size();i++){
-				Blog b = bc.getBlogById(rl.get(i).get("Article_Id"));
+				Blog b = bc.getBlogById(rl.get(i).get("Article_ID"));
 				if(curCat.equals("all") || b.getCategory().equals(curCat))
 					arr.add(b);
 			}

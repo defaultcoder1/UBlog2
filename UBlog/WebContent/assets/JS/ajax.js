@@ -28,10 +28,9 @@ $(document).ready(function() {
 	
 	$(".categorie_item").click(function() {
 		var catValue = $(this).attr("value");
-		$("#category_value").val(catValue);
-		getBlogsByCategory(catValue);
-		$(".categorie_selected").removeClass("categorie_selected");
-		$(this).addClass("categorie_selected");
+		window.location = "/UBlog/Search?category="+catValue;
+		//$(".categorie_selected").removeClass("categorie_selected");
+		//$(this).addClass("categorie_selected");
 	});
 	
 });
