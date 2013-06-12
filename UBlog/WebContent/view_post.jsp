@@ -2,4 +2,5 @@
 
 <%@include file="assets/TEMPLATES/Page_Start.jsp" %>
 <%@include file="assets/TEMPLATES/controls.jsp" %>
+<%@include file="assets/TEMPLATES/view_post_tmp.jsp" %>
 <%@include file="assets/TEMPLATES/Page_End.jsp" %>

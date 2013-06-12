@@ -51,7 +51,7 @@
 							<%
 								ArrayList<Comment> cList = blogs.get(i).getComments();
 								for(int k=0; k<cList.size(); k++) {
-									Comment c = cList.get(i);
+									Comment c = cList.get(k);
 							%>
 								<tr>
 									<td class="comment_author_avatar" rowspan="2">
