@@ -8,7 +8,11 @@
 	<table id="controls_t" cellpadding="0" cellspacing="0" border="0" align="center">
 		<tr>
 			<td id="search_container">
-				<input type="text" id="search" spellcheck="false" autocomplete="off" placeholder="Search..." />
+			<form id="searchForm" action="/UBlog/Search" method="post">
+				<input type="text" id="search" name="search" spellcheck="false" autocomplete="off" placeholder="Search..." />
+				<input type="hidden" name="category" value="all" id="category_value" />
+				<input type="hidden" name="searchInput" id="searchInput" value="1" />
+			</form>
 			</td>
 			<td id="logo_container">
 				<img id="logo" src="/UBlog/assets/IMG/logos/logo_white.png" />

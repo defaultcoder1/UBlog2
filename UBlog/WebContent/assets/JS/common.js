@@ -36,9 +36,4 @@ $(document).ready(function() {
 			'background-position-x': '176px'
 		});
 	});
-	
-	$(".categorie_item").click(function() {
-		$(".categorie_selected").removeClass("categorie_selected");
-		$(this).addClass("categorie_selected");
-	});
 });

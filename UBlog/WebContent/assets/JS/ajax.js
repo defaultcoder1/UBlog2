@@ -7,20 +7,31 @@ $(document).ready(function() {
     	$("#logo").attr("src", "/UBlog/assets/IMG/logos/logo_white.png");
     });
 	
-	function comet() {
+	function getBlogsByCategory(category) {
         $.ajax({
-            url: "/UBlog/notificationServlet",
+            url: "/UBlog/Search",
             type: "POST",
             cache: false,
-            dataType: "TEXT",
-            data: {},
+            dataType: "HTML",
+            data: {category: category},
             success: function (data) {
-            	console.log("prochantali");
+            	alert(data);
             }
         });
     }
 	
-	$(".categorie_item").click(function() {
-		comet();
+	$("#search").keyup(function(event) {
+		if(event.keyCode == 13) {
+			$("#searchForm").submit();
+		}
 	});
+	
+	$(".categorie_item").click(function() {
+		var catValue = $(this).attr("value");
+		$("#category_value").val(catValue);
+		getBlogsByCategory(catValue);
+		$(".categorie_selected").removeClass("categorie_selected");
+		$(this).addClass("categorie_selected");
+	});
+	
 });

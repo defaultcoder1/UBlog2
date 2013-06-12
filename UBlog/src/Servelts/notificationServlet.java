@@ -42,7 +42,7 @@ public class notificationServlet extends HttpServlet implements CometProcessor {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		new UserController((Connection) ((DBConnector)getServletContext().getAttribute("DBC"))).getSubscribers("18");
+		new UserController((Connection) ((DBConnector)getServletContext().getAttribute("DBC"))).getUserBlogs("18");
 		response.getWriter().print("gigi she bozo");
 	}
 
