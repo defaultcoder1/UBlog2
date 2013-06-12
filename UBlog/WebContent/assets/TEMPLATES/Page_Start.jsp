@@ -11,6 +11,7 @@
 <!-- JS -->
 <script type="text/javascript" src="/UBlog/assets/JS/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="/UBlog/assets/JS/common.js"></script>
+<script type="text/javascript" src="/UBlog/assets/JS/ajax.js"></script>
 <script type="text/javascript" src="/UBlog/assets/JS/Cufon/cufon-yui.js"></script>
 <script type="text/javascript" src="/UBlog/assets/JS/Cufon/calibri.cufonfonts.js"></script>
 <script type="text/javascript">

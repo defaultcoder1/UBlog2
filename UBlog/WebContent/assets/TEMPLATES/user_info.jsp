@@ -7,7 +7,7 @@
   <table id="user_info_t" cellpadding="0" cellspacing="5" border="0" align="center">
 		<tr>
 			<td id="user_subscribers">
-				<p id="subscribers_val" class="calibri_bold">0</p>
+				<p id="subscribers_val" class="calibri_bold"><%=u.getSubscribersNum() %></p>
 				<p id="subscribers_desc" class="calibri">Subscribers</p>
 			</td>
 			<td id="user_profile_avatar_container" rowspan="4">
@@ -30,13 +30,13 @@
 		</tr>
 		<tr>
 			<td id="user_subscriptions">
-				<p id="subscriptions_val" class="calibri_bold">0</p>
+				<p id="subscriptions_val" class="calibri_bold"><%=u.getSubscriptionsNum() %></p>
 				<p id="subscriptions_desc" class="calibri">Subscriptions</p>
 			</td>
 		</tr>
 		<tr>
 			<td id="user_posts">
-				<p id="posts_val" class="calibri_bold">0</p>
+				<p id="posts_val" class="calibri_bold">1</p>
 				<p id="posts_desc" class="calibri">Posts</p>
 			</td>
 		</tr>
