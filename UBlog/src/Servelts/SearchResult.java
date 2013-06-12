@@ -35,7 +35,7 @@ public class SearchResult extends HttpServlet {
     }
     private ArrayList<Blog> serachCategory(String category){
     	BlogController bc = new BlogController((Connection) ((DBConnector)getServletContext().getAttribute("DBC")).getConnection());
-    	if(category.equals("all")){
+    	if(category.equals("All")){
     		return bc.getBlogs(0, 30);
     	}
     	ArrayList<Blog> arr = new ArrayList<Blog>();
@@ -66,7 +66,7 @@ public class SearchResult extends HttpServlet {
 			BlogController bc = new BlogController((Connection) ((DBConnector)getServletContext().getAttribute("DBC")).getConnection());
 			for(int i=0;i<rl.size();i++){
 				Blog b = bc.getBlogById(rl.get(i).get("Article_ID"));
-				if(curCat.equals("all") || b.getCategory().equals(curCat))
+				if(curCat.equals("All") || b.getCategory().equals(curCat))
 					arr.add(b);
 			}
 			request.setAttribute("blogs", arr);
