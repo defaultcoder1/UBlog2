@@ -7,7 +7,7 @@ $(document).ready(function() {
     	$("#logo").attr("src", "/UBlog/assets/IMG/logos/logo_white.png");
     });
 	
-	function getBlogsByCategory(category) {
+	/*function getBlogsByCategory(category) {
         $.ajax({
             url: "/UBlog/Search",
             type: "POST",
@@ -18,7 +18,7 @@ $(document).ready(function() {
             	alert(data);
             }
         });
-    }
+    }*/
 	
 	$("#search").keyup(function(event) {
 		if(event.keyCode == 13) {
@@ -27,7 +27,7 @@ $(document).ready(function() {
 	});
 	
 	$(".categorie_item").click(function() {
-		var catValue = $(this).attr("value");
+		var catValue = $(this).text();
 		window.location = "/UBlog/Search?category="+catValue;
 		//$(".categorie_selected").removeClass("categorie_selected");
 		//$(this).addClass("categorie_selected");

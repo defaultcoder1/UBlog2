@@ -10,7 +10,7 @@
 			<td id="search_container">
 			<form id="searchForm" action="/UBlog/Search" method="post">
 				<input type="text" id="search" name="search" spellcheck="false" autocomplete="off" placeholder="Search..." />
-				<input type="hidden" name="category" value="all" id="category_value" />
+				<input type="hidden" name="category" id="category_value" value="<%=request.getParameter("category")!=null ? request.getParameter("category") : "All" %>" />
 				<input type="hidden" name="searchInput" id="searchInput" value="1" />
 			</form>
 			</td>
