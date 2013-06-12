@@ -27,7 +27,7 @@ public class CommentController {
 		db.where(con);
 		ResultList url = db.get("user");
 		LikeController lc = new LikeController(this.con);
-		Comment c = new Comment(commentId, url.first().get("User_ID"), crl.first().get("content"), crl.first().get("Article_ID"),crl.first().get("Date"),
+		Comment c = new Comment(commentId, url.first().get("User_ID"), crl.first().get("Content"), crl.first().get("Article_ID"),crl.first().get("Date"),
 		url.first().get("FName"), url.first().get("LName"),url.first().get("Image"), lc.getCommentLikes(commentId));
 		return c;
 	}
