@@ -1,3 +1,4 @@
+<%@page import="Models.Comment"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Models.Blog"%>
 
@@ -47,29 +48,21 @@
 					<td class="article_comments" colspan="2">
 						<div class="article_comment">
 							<table class="article_comment_t" cellpadding="0" cellspacing="0" border="0">
+							<%
+								ArrayList<Comment> cList = blogs.get(i).getComments();
+								for(int k=0; k<cList.size(); k++) {
+									Comment c = cList.get(i);
+							%>
 								<tr>
 									<td class="comment_author_avatar" rowspan="2">
-										<img src="/UBlog/assets/IMG/no_avatar.png" />
+										<img src="<%=c.getAuthorImage() %>" />
 									</td>
-									<td class="comment_author_name">Giorgi Cxondia</td>
+									<td class="comment_author_name"><%=c.getAuthorLastName() %></td>
 								</tr>
 								<tr>
-									<td class="comment_content">Comment</td>
+									<td class="comment_content"><%=c.getContent() %></td>
 								</tr>
-							</table>
-						</div>
-						<div class="article_comment">
-							<table class="article_comment_t" cellpadding="0" cellspacing="0" border="0">
-							<%  %>
-								<tr>
-									<td class="comment_author_avatar" rowspan="2">
-										<img src="/UBlog/assets/IMG/no_avatar.png" />
-									</td>
-									<td class="comment_author_name">Giorgi Cxondia</td>
-								</tr>
-								<tr>
-									<td class="comment_content">Comment</td>
-								</tr>
+							<% } %>
 							</table>
 						</div>
 					</td>

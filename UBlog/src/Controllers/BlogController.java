@@ -65,6 +65,7 @@ public class BlogController {
 		ArrayList<Comment> arr = new ArrayList<Comment>();
 		for(int i=0;i<rl.size();i++){
 			Comment c = cmc.getCommentById(rl.get(i).get("Comment_ID"));
+			System.out.println(c.getContent());
 			arr.add(c);
 		}
 		return arr;
