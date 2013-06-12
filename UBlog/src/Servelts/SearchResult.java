@@ -55,8 +55,8 @@ public class SearchResult extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String curCat = request.getParameter("category");
 		RequestDispatcher rd;
-		if(request.getParameter("wh")==null){
-			String toSearch = request.getParameter("searchterm");
+		if(request.getParameter("searchInput").equals("1")){
+			String toSearch = request.getParameter("search");
 			ArrayList<Blog> arr = new ArrayList<Blog>();
 			DB db = new DB(((DBConnector)getServletContext().getAttribute("DBC")).getConnection(), "ublog");
 			Condition c = new Condition(true); 
@@ -70,7 +70,7 @@ public class SearchResult extends HttpServlet {
 					arr.add(b);
 			}
 			request.setAttribute("blogs", arr);
-			rd = request.getRequestDispatcher("index.jsp");
+			rd = request.getRequestDispatcher("search.jsp");
 		}
 		else{
 			request.setAttribute("blogs", this.serachCategory(curCat));
