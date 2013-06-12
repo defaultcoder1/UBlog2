@@ -37,7 +37,7 @@ public class BlogServlet extends HttpServlet {
 		String blogId = request.getParameter("blogid");
 		BlogController bc = new BlogController((Connection) ((DBConnector)getServletContext().getAttribute("DBC")).getConnection());
 		request.setAttribute("blog", bc.getBlogById(blogId));
-		RequestDispatcher rd = request.getRequestDispatcher("blog.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("view_post.jsp");
 		rd.forward(request, response);
 	}
 
