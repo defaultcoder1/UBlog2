@@ -33,18 +33,18 @@ public class SimpleTasks extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-    private void addLikeToArticle(User u,Blog a,Connection con){
+    private void addLikeToArticle(String userid,String blogID,Connection con){
     	DB db = new DB(con, "ublog");
     	HashMap<String, String> m = new HashMap<String,String>();
-		m.put("User_ID",u.getId());
-		m.put("Article_ID", a.getId());
+		m.put("User_ID",userid);
+		m.put("Article_ID", blogID);
 		db.insert("like_article", m,null);
     }
-    private void addLikeToComment(User u,Comment a,Connection con){
+    private void addLikeToComment(String userid,String commentId,Connection con){
     	DB db = new DB(con, "ublog");
     	HashMap<String, String> m = new HashMap<String,String>();
-		m.put("User_ID",u.getId());
-		m.put("Comment_ID", a.getId());
+		m.put("User_ID",userid);
+		m.put("Comment_ID", commentId);
 		db.insert("like_comment", m,null);
     }
     private void addSubscriber(String who,String towho,Connection con){
@@ -54,8 +54,14 @@ public class SimpleTasks extends HttpServlet {
 		m.put("Author_ID", towho);
 		db.insert("subscribe", m,null);
     }
-    private void addComment(String articleid,User u,String content,String date){
-    	
+    private void addComment(String articleid,String userid,String content,String date,Connection con){
+    	DB db = new DB(con, "ublog");
+    	HashMap<String, String> m = new HashMap<String,String>();
+		m.put("Article_ID",articleid);
+		m.put("User_ID",userid);
+		m.put("Content", content);
+		m.put("Date", date);
+		db.insert("comment", m,null);
     }
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
