@@ -70,11 +70,11 @@ public class SearchResult extends HttpServlet {
 					arr.add(b);
 			}
 			request.setAttribute("blogs", arr);
-			rd = request.getRequestDispatcher("search.jsp");
+			rd = request.getRequestDispatcher("index.jsp");
 		}
 		else{
 			request.setAttribute("blogs", this.serachCategory(curCat));
-			rd = request.getRequestDispatcher("search.jsp");
+			rd = request.getRequestDispatcher("index.jsp");
 		}
 		rd.forward(request, response);
 	}
