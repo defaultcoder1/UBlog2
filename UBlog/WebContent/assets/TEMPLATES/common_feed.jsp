@@ -40,7 +40,7 @@
 					<td class="like_comment" colspan="2">
 						<div class="like_comment_container">
 							<span class="like">Like</span>
-							<span class="view_comments">View Comments</span>
+							<span class="view_comments" style="<%=blogs.get(i).getCommentNum() == 0 ? "display:none;" : "" %>">View Comments</span>
 							<span class="like_num"><%=blogs.get(i).getLikeNum() %> bloggers like this</span>
 						</div>
 					</td>
