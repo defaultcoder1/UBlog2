@@ -38,10 +38,23 @@
 		</tr>
 		<tr>
 			<td id="user_posts">
-				<p id="posts_val" class="calibri_bold"><%=((ArrayList<Blog>)request.getAttribute("blogs")).size() %></p>
+				<p id="posts_val" class="calibri_bold"><%=request.getAttribute("articlenum") %></p>
 				<p id="posts_desc" class="calibri">Posts</p>
 			</td>
 		</tr>
 		<tr><td></td></tr>
+	</table>
+</div>
+
+
+
+<div id="feed_filter">
+  <table id="feed_filter_t" cellpadding="0" cellspacing="0" border="0" align="center">
+		<tr>
+			<td class="feed_filter_placeholder" width="30"> </td>
+			<td class="feed_filter_buttons feed_filter_button_selected calibri_bold">Subscribed Posts</td>
+			<td class="feed_filter_buttons calibri_bold">My Posts</td>
+			<td class="feed_filter_placeholder"> </td>
+		</tr>
 	</table>
 </div>
