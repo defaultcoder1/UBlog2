@@ -38,7 +38,7 @@
 		</tr>
 		<tr>
 			<td id="user_posts">
-				<p id="posts_val" class="calibri_bold"><%=((ArrayList<Blog>)request.getAttribute("myblogs")).size() %></p>
+				<p id="posts_val" class="calibri_bold"><%=((ArrayList<Blog>)request.getAttribute("blogs")).size() %></p>
 				<p id="posts_desc" class="calibri">Posts</p>
 			</td>
 		</tr>
