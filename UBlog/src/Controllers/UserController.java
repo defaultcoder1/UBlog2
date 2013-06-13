@@ -22,6 +22,13 @@ public class UserController {
 	public UserController(Connection connection) {
 		this.con = connection;
 	}
+	public int getUserArticlesNum(String userId){
+		DB db = new DB(this.con, "ublog");
+		Condition c = new Condition(true);
+		c.add("User_ID", userId);
+		db.where(c);
+		return db.get("aticle").size();
+	}
 	public Author getAuthorById(String authorId){
 		Author a;
 		DB db = new DB(this.con,"ublog");

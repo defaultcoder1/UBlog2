@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.tomcat.dbcp.dbcp.DbcpException;
+
 import com.mysql.jdbc.Connection;
 
 import Controllers.DBConnector;
@@ -35,6 +37,7 @@ public class UserPageServlet extends HttpServlet {
     }
     private void addRequestAttributes(HttpServletRequest request,User u,UserController uc){
     	request.setAttribute("user", u);
+    	request.setAttribute("articlenum", uc.getUserArticlesNum(u.getId()));
     	ArrayList<Author> arr = new ArrayList<Author>();
     	for(int i=0;i<u.getSubscribersNum();i++){
     		arr.add(uc.getAuthorById(u.getSubscriber(i)));
@@ -70,7 +73,6 @@ public class UserPageServlet extends HttpServlet {
 					request.getParameter("id")==null){
 				u = (User) request.getSession().getAttribute("user");
 			}
-			
 			else{
 				u = uc.getUserById((String)request.getParameter("id"));
 			}
