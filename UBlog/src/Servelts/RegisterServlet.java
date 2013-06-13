@@ -48,10 +48,7 @@ public class RegisterServlet extends HttpServlet {
 		RequestDispatcher rd;
 		UserController uc = new UserController((Connection) ((DBConnector)getServletContext().getAttribute("DBC")).getConnection());
 		if(!checkAtributes(request)){
-			if(request.getAttribute("update")==null)
-				rd = request.getRequestDispatcher("login.jsp");
-			else
-				rd = request.getRequestDispatcher("UserInfo");
+			rd = request.getRequestDispatcher("login.jsp");
 		}else{
 			RegisterController rc = new RegisterController(((DBConnector)getServletContext().getAttribute("DBC")).getConnection());
 			String a = rc.addNewUser((String)request.getParameter("rfname"),(String)request.getParameter("rlname"),

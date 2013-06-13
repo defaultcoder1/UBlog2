@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Controllers.DBConnector;
+import Controllers.RegisterController;
+import Controllers.UserController;
 import DB.Condition;
 import DB.DB;
 import Models.User;
@@ -31,17 +33,42 @@ public class UserInfo extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-   
+    private boolean checkAtributes(HttpServletRequest request){
+    	if((String) request.getParameter("rfname")=="" || (String)request.getParameter("rlname")==""
+    		|| (String)request.getParameter("remail")=="" || (String)request.getParameter("rbname")=="" 
+    		|| (String)request.getParameter("rpassword")=="" 
+    		|| !((String)request.getParameter("rrpassword")).equals((String)request.getParameter("rpassword"))){
+    		return false;
+    	}
+    	return true;
+    }
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Connection con = (Connection) ((DBConnector)getServletContext().getAttribute("DBC")).getConnection();
-		DB db = new DB(con, "ublog");
-		Condition c = new Condition(true);
-		User u = (User)request.getSession().getAttribute("user");
-		request.setAttribute("update", true);
-		RequestDispatcher rd = request.getRequestDispatcher("Register");
+		if(request.getParameter("submit")!=null){
+			if(!this.checkAtributes(request)){
+				RequestDispatcher rd = request.getRequestDispatcher("edit.jsp");
+				rd.forward(request, response);
+				return;
+			}
+			RegisterController rc = new RegisterController((Connection) ((DBConnector)getServletContext().getAttribute("DBC")).getConnection());
+			UserController usc = new UserController((Connection) ((DBConnector)getServletContext().getAttribute("DBC")).getConnection());
+			usc.deleteUser((String) request.getAttribute("oldid"));
+			rc.addOldUser((String)request.getAttribute("oldid"),(String)request.getParameter("rfname"),(String)request.getParameter("rlname"),
+					(String)request.getParameter("remail"),(String)request.getParameter("rpassword"),
+					(String)request.getParameter("rimage"),(String)request.getParameter("rbname"));
+			request.getSession().setAttribute("user",usc.getUserById((String)request.getAttribute("oldid")));
+			RequestDispatcher rd = request.getRequestDispatcher("UserPage");
+			rd.forward(request, response);
+			return;
+		}
+		if(request.getSession().getAttribute("user")==null){
+			RequestDispatcher rd = request.getRequestDispatcher("Login");
+			rd.forward(request, response);
+			return;
+		}
+		RequestDispatcher rd = request.getRequestDispatcher("edit.jsp");
 		rd.forward(request, response);
 	}
 

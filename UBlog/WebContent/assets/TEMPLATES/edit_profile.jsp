@@ -1,6 +1,6 @@
 <div id="content">
 	
-	<form action="/UBlog/UserInfo" method="post">
+	<form action="/UBlog/UserPage" method="post">
 		<input type="text" name="rfname" /><br />
 		<input type="text" name="rlname" /><br />
 		<input type="text" name="rbname" /><br />

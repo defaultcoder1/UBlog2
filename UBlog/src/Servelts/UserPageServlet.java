@@ -64,7 +64,13 @@ public class UserPageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		if(request.getParameter("submit")!=null && request.getAttribute("oldid")==null){
+			RequestDispatcher rd = request.getRequestDispatcher("UserInfo");
+			request.setAttribute("oldid",
+					((User)request.getSession().getAttribute("user")).getId());
+	    	rd.forward(request, response);
+	    	return;
+		}
 		RequestDispatcher rd = request.getRequestDispatcher("user.jsp");
 		User u;
 		UserController uc = new UserController((Connection) ((DBConnector)getServletContext().getAttribute("DBC")).getConnection());
