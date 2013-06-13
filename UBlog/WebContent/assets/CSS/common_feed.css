@@ -21,10 +21,12 @@
 	overflow:auto;}
 .like {display:block; padding:7px; padding-left:10px; padding-right:10px; float:left;
 	background-color:#FFF; cursor:pointer;}
+.unlike {background-color:#507EAD; color:#FFF;}
 .view_comments {display:block; padding:7px; padding-left:10px; padding-right:10px; float:left;
 	background-color:#FFF; cursor:pointer; border-left:1px solid #DDD;}
 .hide_comments {background-color:#507EAD; color:#FFF;}
 .like:hover, .view_comments:hover {background-color:#507EAD; color:#FFF;}
+
 .like_num {float:right; padding:7px; color:#444; cursor:pointer;}
 .like_num:hover {text-decoration:underline;}
 

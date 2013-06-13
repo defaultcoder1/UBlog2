@@ -13,9 +13,9 @@ $(document).ready(function() {
             type: "POST",
             cache: false,
             dataType: "HTML",
-            data: {articleid: articleid},
+            data: {articleid: articleid, which: "likearticle"},
             success: function (data) {
-            	alert(liked);
+            	alert("liked");
             }
         });
     }
