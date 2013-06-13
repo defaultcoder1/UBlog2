@@ -57,8 +57,8 @@ public class UserPageServlet extends HttpServlet {
     		for(int i=0;i<u.getSubscriptionsNum();i++){
     			blogs.addAll(uc.getUserBlogs(u.getSubscription(i)));
     		}
+    		request.setAttribute("blogs", blogs);
     	}
-		request.setAttribute("blogs", blogs);
     }
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
