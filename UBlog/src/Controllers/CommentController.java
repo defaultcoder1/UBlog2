@@ -32,4 +32,14 @@ public class CommentController {
 		url.first().get("FName"), url.first().get("LName"),url.first().get("Image"), lc.getCommentLikes(commentId));
 		return c;
 	}
+	
+	public void deleteComment(String commentId){
+		DB db = new DB(this.con, "ublog");
+		Condition con = new Condition(true);
+		con.add("Comment_ID", commentId);
+		db.where(con);
+		db.delete("Comment");
+		db.delete("like_comment");
+		
+	}
 }

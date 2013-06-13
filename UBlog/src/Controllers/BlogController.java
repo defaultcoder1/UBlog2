@@ -94,4 +94,15 @@ public class BlogController {
 		}
 		return arr;
 	}
+	
+	public void deleteArticle(String articleId){
+		DB db = new DB(this.con, "ublog");
+		Condition con = new Condition(true);
+		con.add("Article_ID", articleId);
+		db.where(con);
+		db.delete("article");
+		db.delete("user_article");
+	}
+	
+	
 }
