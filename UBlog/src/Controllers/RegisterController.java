@@ -23,7 +23,7 @@ public class RegisterController {
 		Condition cnd = new Condition(true);
 		cnd.add("EMail",remail);
 		db.where(cnd);
-		if(db.get("user").size() > 0) return "-1";
+		if(db.get("user")==null) return "-1";
 		
 		HashMap<String, String> values = new HashMap<String, String>();
 		values.put("FName",rfname);
