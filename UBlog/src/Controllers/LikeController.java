@@ -61,7 +61,6 @@ public class LikeController {
 		con.add("User_ID", userId);
 		db.where(con);
 		db.delete("like_comment");
-		
 	}
 	public void unlikeArticle(String articleId, String userId){
 		DB db = new DB(this.con, "ublog");
@@ -72,17 +71,17 @@ public class LikeController {
 		db.delete("like_article");
 	}
 	  public void addLikeToArticle(String userid,String blogID,Connection con){
-	    	DB db = new DB(con, "ublog");
-	    	HashMap<String, String> m = new HashMap<String,String>();
-			m.put("User_ID",userid);
-			m.put("Article_ID", blogID);
-			db.insert("like_article", m,null);
-	    }
+	    DB db = new DB(con, "ublog");
+	    HashMap<String, String> m = new HashMap<String,String>();
+		m.put("User_ID",userid);
+		m.put("Article_ID", blogID);
+		db.insert("like_article", m,null);
+	 }
 	 public void addLikeToComment(String userid,String commentId,Connection con){
-	    	DB db = new DB(con, "ublog");
-	    	HashMap<String, String> m = new HashMap<String,String>();
-			m.put("User_ID",userid);
-			m.put("Comment_ID", commentId);
-			db.insert("like_comment", m,null);
+	    DB db = new DB(con, "ublog");
+	    HashMap<String, String> m = new HashMap<String,String>();
+		m.put("User_ID",userid);
+		m.put("Comment_ID", commentId);
+		db.insert("like_comment", m,null);
 	 }
 }

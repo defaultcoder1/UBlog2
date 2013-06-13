@@ -60,6 +60,14 @@ public class SimpleTasks extends HttpServlet {
 			lc.addLikeToComment(((User)request.getSession().getAttribute("user")).getId(),
 					request.getParameter("commentid"), con);
 			break;
+		case "unlikecomment":
+			lc.unlikeComment(request.getParameter("commentid"),
+					((User)request.getSession().getAttribute("user")).getId());
+			break;
+		case "unlikearticle":
+			lc.unlikeArticle(request.getParameter("articleid"),
+					((User)request.getSession().getAttribute("user")).getId());
+			break;
 		case "addcomment":
 			cmc.addComment(request.getParameter("articleid"), 
 ((User)request.getSession().getAttribute("user")).getId(), request.getParameter("content"),
