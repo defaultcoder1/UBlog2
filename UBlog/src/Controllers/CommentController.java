@@ -51,7 +51,7 @@ public class CommentController {
 		HashMap <String, String> m = new HashMap<String, String>();
 		m.put("User_ID", userId);
 		m.put("Article_ID", articleId);
-		m.put("Content", content);
+		m.put("Content", content);		
 		db.insert("comment", m, commentId);
 		return commentId.toString();
 	}

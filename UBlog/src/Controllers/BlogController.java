@@ -12,6 +12,7 @@ import DB.Row;
 import Models.Like;
 import Models.Blog;
 import Models.Comment;
+import Models.User;
 
 import com.mysql.jdbc.Connection;
 
@@ -94,4 +95,5 @@ public class BlogController {
 		}
 		return arr;
 	}
+	
 }

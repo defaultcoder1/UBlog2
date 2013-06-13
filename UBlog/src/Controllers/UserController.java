@@ -6,6 +6,7 @@ import DB.DB;
 import DB.ResultList;
 import DB.Row;
 import Models.Blog;
+import Models.Comment;
 import Models.User;
 
 import com.mysql.jdbc.Connection;
@@ -83,4 +84,21 @@ public class UserController {
 		}
 		return subscribed;
 	}
+	
+	public ArrayList<Comment> getComments(String userId){
+		DB db = new DB(this.con, "ublog");
+		CommentController cc = new CommentController (this.con);
+		Condition cnd = new Condition(true);
+		cnd.add("User_ID", userId);
+		db.where(cnd);
+		ResultList rl = db.get("comment");
+		ArrayList<Comment> comments = new ArrayList<Comment>();
+		for (int i=0; i<rl.size(); i++){
+			Row row = rl.get(i);
+			Comment c = cc.getCommentById(row.get("User_ID"));
+			comments.add(c);
+		}
+		return comments;
+	}
+	
 }
