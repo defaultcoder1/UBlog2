@@ -64,6 +64,7 @@ public class BlogController {
 		m.put("Title", title);
 		m.put("Content", content);
 		m.put("User_ID", userid);
+		m.put("Category", category);
 		CString article_id = new CString("");
 		DB db = new DB(this.con, "ublog");
 		db.insert("article", m,article_id);
