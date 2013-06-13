@@ -6,14 +6,14 @@
 	<div id="common_feed_inner_box">
 		
 		<%
-			ArrayList<Blog> 	blogs = (ArrayList<Blog>) request.getAttribute("blogs");
+			ArrayList<Blog> blogs = (ArrayList<Blog>) request.getAttribute("blogs");
 			if(blogs == null) {
-				blogs = (ArrayList<Blog>) request.getAttribute("myblogs");
+				blogs = (ArrayList<Blog>) request.getAttribute("sublogs");
 			}
 			for(int i=0; i<blogs.size(); i++) {
 		%>
 		
-		<div class="article">
+		<div class="article" style="<%=(i%2 == 0) ? "float:left; clear:left" : "float:right; clear:right;" %>">
 			<table class="article_t" cellpading="0" cellspacing="0" border="0">
 				<tr>
 					<td class="author_avatar" rowspan="2"><img src="<%=blogs.get(i).getAuthorImage() %>" /></td>
