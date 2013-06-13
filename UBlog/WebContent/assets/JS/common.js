@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
 	$("#logo").click(function() {
-		//window.location = "Index";
+		window.location = "Index";
 	});
 	
 	$(".user_icons").mouseover(function() {
@@ -45,6 +45,6 @@ $(document).ready(function() {
 	
 	$(".categorie_item").click(function() {
 		var catValue = $(this).text();
-		//window.location = "/UBlog/Search?category="+catValue;
+		window.location = "/UBlog/Search?category="+catValue;
 	});
 });

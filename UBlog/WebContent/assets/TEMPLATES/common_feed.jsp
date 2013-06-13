@@ -57,7 +57,7 @@
 									<td class="comment_author_avatar" rowspan="2">
 										<img src="<%=c.getAuthorImage() %>" />
 									</td>
-									<td class="comment_author_name"><%=c.getAuthorLastName() %></td>
+									<td class="comment_author_name"><%=c.getAuthorName() + " " %><%=c.getAuthorLastName() %></td>
 								</tr>
 								<tr>
 									<td class="comment_content"><%=c.getContent() %></td>
