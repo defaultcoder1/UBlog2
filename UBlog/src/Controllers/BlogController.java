@@ -57,6 +57,14 @@ public class BlogController {
 		return newBlog;
 	}
 	
+	private void addTags(CString articleId, ArrayList<String> tags){
+		DB db = new DB(this.con, "ublog");
+		for (int i=0; i<tags.size(); i++){
+			HashMap<String, String> m = new HashMap<String, String>();
+			m.put("Tag", tags.get(i));
+			db.insert("tag_article", m, articleId);
+		}
+	}
 	public String addArticle(String image,String title,String content,String userid,
 			String category,ArrayList<String> tags){
 		HashMap<String, String> m = new HashMap<String,String>();
@@ -67,6 +75,7 @@ public class BlogController {
 		CString article_id = new CString("");
 		DB db = new DB(this.con, "ublog");
 		db.insert("article", m,article_id);
+		addTags(article_id, tags);
 		return article_id.toString();
 	}
 	
