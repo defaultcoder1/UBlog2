@@ -68,7 +68,18 @@ public class SimpleTasks extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Connection con = (Connection) ((DBConnector)getServletContext().getAttribute("DBC")).getConnection();
-		
+		String which = request.getParameter("which");
+		switch (which) {
+		case "likearticle":
+			this.addLikeToArticle(((User)request.getSession().getAttribute("user")).getId(),
+					request.getParameter("articleid"), con);
+			break;
+		case "likecomment":
+			
+			break;
+		default:
+			break;
+		}
 	}
 
 	/**
