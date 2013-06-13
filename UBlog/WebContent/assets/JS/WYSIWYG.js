@@ -40,6 +40,9 @@ $(document).ready(function() {
 	//------------------------------------------------------------------------------------------------------------
 	
 	$("#cancel_button").click(function() { window.location = "UserPage"; });
+	$("#publish_button").click(function() {
+		$("#article_content").val($("#editor_area").contents().find("body").html());
+	});
 	
 	$("#open_gallery").click(function() {
 		$("#gallery_pop").fadeIn();
@@ -64,6 +67,7 @@ $(document).ready(function() {
 				$("#post_image_box").css("background-image", "none");
 				$("#post_image_box").css("border", "none");
 				$("#post_image").attr("src", src);
+				$("#article_image").val(src);
 			}else {
 				editor_area.document.execCommand('insertimage', false, src);
 			}

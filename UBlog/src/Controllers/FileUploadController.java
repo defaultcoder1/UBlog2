@@ -3,15 +3,15 @@ package Controllers;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-
 import org.apache.commons.fileupload.FileItemStream;
-
 
 public class FileUploadController {
 	
-	public static boolean processFile(String path, FileItemStream item) {
+	public static boolean processFile(String name, FileItemStream item, String userID) {
 		try {
-			File savedFile = new File("C:\\Users\\Gigi Pataraia\\git\\UBlog2\\UBlog\\WebContent\\user_uploads\\" + item.getName());
+			File f = new File("C:"+File.separator+"Users"+File.separator+"GiorgiTS"+File.separator+"git"+File.separator+"UBlog2"+File.separator+"UBlog"+File.separator+"WebContent"+File.separator+"user_uploads"+File.separator+userID);
+			if(!f.exists()) f.mkdir();
+			File savedFile = new File(f.getAbsolutePath() + File.separator + name + "." + item.getName().substring(item.getName().length()-3));
 			FileOutputStream fos = new FileOutputStream(savedFile);
 			InputStream is = item.openStream();
 			int x = 0;
@@ -21,11 +21,11 @@ public class FileUploadController {
 			}
 			fos.flush();
 			fos.close();
+			is.close();
 			return true;
 			
 		} catch(Exception e) { e.printStackTrace(); }
 	
-		
 		return false;
 	}
 }
