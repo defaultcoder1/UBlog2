@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
 	$("#logo").click(function() {
-		window.location = "Index";
+		//window.location = "Index";
 	});
 	
 	$(".user_icons").mouseover(function() {
@@ -35,5 +35,16 @@ $(document).ready(function() {
 			width: 160,
 			'background-position-x': '176px'
 		});
+	});
+	
+	$("#search").keyup(function(event) {
+		if(event.keyCode == 13) {
+			$("#searchForm").submit();
+		}
+	});
+	
+	$(".categorie_item").click(function() {
+		var catValue = $(this).text();
+		//window.location = "/UBlog/Search?category="+catValue;
 	});
 });

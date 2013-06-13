@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <script type="text/javascript" src="/UBlog/assets/JS/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="/UBlog/assets/JS/Cufon/cufon-yui.js"></script>
 <script type="text/javascript" src="/UBlog/assets/JS/Cufon/calibri.cufonfonts.js"></script>
@@ -30,13 +31,17 @@
 <div id="Gallery">
 	<div id="Gallery_Header">
 		<p id="Gallery_Header_Title" class="calibri_bold">Choose from below or upload:</p>
-		<form style="display:none;" id="form" action="/UBlog/Publish" method="post" enctype="multipart/form-data">
+		<form style="display:none;" id="form" action="/UBlog/Gallery" method="post" enctype="multipart/form-data">
 			<input type="file" name="file" id="file" />
 		</form>
 		<button id="Upload_Button">Choose Image</button>
 	</div>
 	<div id="Gallery_Images">
-		<img src="http://www.xda-developers.com/wp-content/uploads/2013/01/ubuntu-1024x819.png" />
-		<img src="https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-ash3/600955_543581062355552_2064980147_n.jpg" />
+	<%
+		ArrayList<String> images = (ArrayList<String>) request.getAttribute("images");
+		for(int i=0; i<images.size(); i++) {
+	%>
+		<img src="<%=images.get(i) %>" />
+	<% } %>
 	</div>
 </div>
