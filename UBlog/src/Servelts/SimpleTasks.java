@@ -68,6 +68,7 @@ public class SimpleTasks extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Connection con = (Connection) ((DBConnector)getServletContext().getAttribute("DBC")).getConnection();
+		
 	}
 
 	/**

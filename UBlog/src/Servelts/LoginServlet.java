@@ -44,6 +44,11 @@ public class LoginServlet extends HttpServlet {
 			password = (String) request.getParameter("rpassword");
 		}
 		RequestDispatcher rd;
+		if(email==null){
+			request.getSession().removeAttribute("user");
+			rd = request.getRequestDispatcher("Login");
+			return;
+		}
 		if(email=="" || password=="" || email==null){
 			rd = request.getRequestDispatcher("login.jsp");
 		}
