@@ -15,6 +15,7 @@ $(document).ready(function() {
             dataType: "HTML",
             data: {articleid: articleid, which: which},
             success: function (data) {
+            
             	
             }
         });
