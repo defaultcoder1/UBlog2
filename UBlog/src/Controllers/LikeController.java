@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.apache.tomcat.dbcp.dbcp.DbcpException;
+
 import DB.Condition;
 import DB.DB;
 import DB.ResultList;
@@ -83,5 +85,19 @@ public class LikeController {
 		m.put("User_ID",userid);
 		m.put("Comment_ID", commentId);
 		db.insert("like_comment", m,null);
+	 }
+	 public void deleteLikesOfArticle(String blogId){
+		 DB db = new DB(this.con, "ublog");
+		 Condition c = new Condition(true);
+		 c.add("Article_ID", blogId);
+		 db.where(c);
+		 db.delete("like_article");
+	 }
+	 public void deleteLikesOfComment(String commentId){
+		 DB db = new DB(this.con, "ublog");
+		 Condition c = new Condition(true);
+		 c.add("Comment_ID", commentId);
+		 db.where(c);
+		 db.delete("like_comment");
 	 }
 }

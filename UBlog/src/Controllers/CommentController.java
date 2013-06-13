@@ -49,6 +49,17 @@ public class CommentController {
 		db.where(con);
 		db.delete("Comment");
 		db.delete("like_comment");
-		
+	}
+	public void deleteCommentsOfArticle(String articleId){
+		 LikeController lc = new LikeController(this.con);
+		 DB db = new DB(this.con, "ublog");
+		 Condition c = new Condition(true);
+		 c.add("Article_ID",articleId);
+		 db.where(c);
+		 ResultList rl = db.get("comment");
+		 for(int i=0;i<rl.size();i++){
+			 lc.deleteLikesOfComment(rl.get(i).get("Comment_ID"));
+		 }
+		 db.delete("comment");
 	}
 }

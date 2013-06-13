@@ -112,7 +112,8 @@ public class BlogController {
 		con.add("Article_ID", articleId);
 		db.where(con);
 		db.delete("article");
-		db.delete("user_article");
+		LikeController lc = new LikeController(this.con);
+		lc.deleteLikesOfArticle(articleId);
 	}
 	
 	
