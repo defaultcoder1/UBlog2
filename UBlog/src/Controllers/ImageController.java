@@ -18,7 +18,7 @@ public class ImageController {
 	
 	public ArrayList<String> getImagesByUserID(String userID) {
 		DB db = new DB(this.con, "ublog");
-		db.select("image");
+		db.select("Image");
 		Condition cnd = new Condition(true);
 		cnd.add("User_ID", userID);
 		db.where(cnd);
@@ -26,7 +26,7 @@ public class ImageController {
 		ArrayList<String> images = new ArrayList<String>();
 		
 		for(int i=0; i<rl.size(); i++) {
-			images.add(rl.get(i).get("image"));
+			images.add(rl.get(i).get("Image"));
 		}
 		
 		return images;
@@ -36,7 +36,7 @@ public class ImageController {
 		DB db = new DB(this.con, "ublog");
 		Condition cnd = new Condition(true);
 		cnd.add("User_ID", userID);
-		db.select("image");
+		db.select("Image");
 		db.where(cnd);
 		ResultList rl = db.get("user_images");
 		return "" + rl.size();
@@ -46,7 +46,7 @@ public class ImageController {
 		DB db = new DB(this.con, "ublog");
 		HashMap<String, String> values = new HashMap<String, String>();
 		values.put("User_ID", userID);
-		values.put("image", src);
+		values.put("Image", src);
 		db.insert("user_images", values, null);
 	}
 	
