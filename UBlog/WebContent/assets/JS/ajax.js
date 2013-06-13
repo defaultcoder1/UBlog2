@@ -12,13 +12,21 @@ $(document).ready(function() {
             url: "/UBlog/SimpleTasks",
             type: "POST",
             cache: false,
-            dataType: "HTML",
+            dataType: "TEXT",
             data: {articleid: articleid, which: which},
-            success: function (data) {
-            	
-            }
+            success: function (data) {}
         });
     }
+	function likeComment(commentid, which) {
+		$.ajax({
+            url: "/UBlog/SimpleTasks",
+            type: "POST",
+            cache: false,
+            dataType: "TEXT",
+            data: {commentid: commentid, which: which},
+            success: function (data) {}
+        });
+	}
 	
 	$(".like").click(function() {
 		var articleid = $(this).attr("articleid");
@@ -32,6 +40,15 @@ $(document).ready(function() {
 			$(this).addClass("unlike");
 			$(this).text("Unike");
 		}
+	});
+	
+	$(".comment_like").click(function() {
+		var commentid = $(this).attr("commentid");
+		var which = "likecomment";
+		if($(this).text() == "Unike") which = "unlikecomment";
+		likeComment(commentid, which);
+		if($(this).text() == "Unlike") $(this).text("Like");
+		else $(this).text("Unlike");
 	});
 	
 });

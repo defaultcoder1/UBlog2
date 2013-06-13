@@ -12,11 +12,13 @@
 			for(int i=0; i<blogs.size(); i++) {
 				String unlike = "";
 				String likeValue = "Like";
+				
 				for(int k=0; k<blogs.get(i).getLikes().size(); k++) {
 					if(blogs.get(i).getLikes().get(k).getAuthorId().equals(myID)) {
 						unlike = " unlike";
 						likeValue = "Unlike";
 						break;
+						
 					}
 				}
 		%>
@@ -65,6 +67,11 @@
 								ArrayList<Comment> cList = blogs.get(i).getComments();
 								for(int k=0; k<cList.size(); k++) {
 									Comment c = cList.get(k);
+									String likeCommentValue = "Like";
+									/*for(int j=0; j<c.getLikes().size(); j++) {
+										if(c.getLikes().get(i).getAuthorId().equals(myID))
+											likeCommentValue = "Unlike";
+									}*/
 							%>
 								<tr>
 									<td class="comment_author_avatar" rowspan="2">
@@ -77,7 +84,7 @@
 								</tr>
 								<tr>
 									<td class="comment_date">
-										<%=c.getDate() %><span class="comment_like">Like</span>
+										<%=c.getDate() %><span class="comment_like" commentid="<%=c.getId() %>"><%=likeCommentValue %></span>
 										<span class="comment_like_num"><%=c.getLikes() %></span>
 									</td>
 								</tr>
