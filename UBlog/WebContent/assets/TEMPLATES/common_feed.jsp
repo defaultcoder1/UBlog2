@@ -24,8 +24,11 @@
 		<div class="article" style="<%=(i%2 == 0) ? "float:left; clear:left" : "float:right; clear:right;" %>">
 			<table class="article_t" cellpading="0" cellspacing="0" border="0">
 				<tr>
-					<td class="author_avatar" rowspan="2"><img src="<%=blogs.get(i).getAuthorImage() %>" /></td>
-					<td class="article_title"><a href="/UBlog/Blog?id=<%=blogs.get(i).getId() %>"><%=blogs.get(i).getTitle() %></a> (<%=blogs.get(i).getCategory()%>)</td>
+					<td class="author_avatar" rowspan="2"><a href="/UBlog/UserPage?id=<%=blogs.get(i).getAuthorId() %>"><img src="<%=blogs.get(i).getAuthorImage() %>" /></a></td>
+					<td class="article_title">
+						<a href="/UBlog/Blog?id=<%=blogs.get(i).getId() %>"><%=blogs.get(i).getTitle() %></a>
+						<span class="article_category_container calibri"><%=blogs.get(i).getCategory() %></span>
+					</td>
 				</tr>
 				<tr><td class="article_date"><%=blogs.get(i).getDate() %></td></tr>
 				<tr>
@@ -42,13 +45,14 @@
 						<div class="article_content_container">
 							 <%=blogs.get(i).getContent() %>
 						</div>
+						<div class="article_content_after"></div>
 					</td>
 				</tr>
 				<tr>
 					<td class="like_comment" colspan="2">
 						<div class="like_comment_container">
 							<span class="like<%=unlike %>" articleid="<%=blogs.get(i).getId() %>"><%=likeValue %></span>
-							<span class="view_comments" style="<%=blogs.get(i).getCommentNum() == 0 ? "display:none;" : "" %>">View Comments</span>
+							<span class="view_comments" style="<%=blogs.get(i).getCommentNum() == 0 ? "display:none;" : "" %>">Show Comments</span>
 							<span class="like_num"><%=blogs.get(i).getLikeNum() %> bloggers like this</span>
 						</div>
 					</td>
@@ -66,10 +70,16 @@
 									<td class="comment_author_avatar" rowspan="2">
 										<img src="<%=c.getAuthorImage() %>" />
 									</td>
-									<td class="comment_author_name"><%=c.getAuthorName() + " " %><%=c.getAuthorLastName() %></td>
+									<td class="comment_content_container">
+										<font class="comment_author_name"><%=c.getAuthorName() + " " %><%=c.getAuthorLastName() %></font>
+										<font class="comment_content"><%=c.getContent() %></font>
+									</td>
 								</tr>
 								<tr>
-									<td class="comment_content"><%=c.getContent() %></td>
+									<td class="comment_date">
+										<%=c.getDate() %><span class="comment_like">Like</span>
+										<span class="comment_like_num"><%=c.getLikes() %></span>
+									</td>
 								</tr>
 							<% } %>
 							</table>

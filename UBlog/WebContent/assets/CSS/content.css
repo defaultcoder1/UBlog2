@@ -41,5 +41,6 @@
 #feed_filter_t {width:100%;}
 .feed_filter_buttons {width:120px; text-align:center; padding:12px; font-size:13px; color:#FFF; cursor:pointer;
 	background-image:url(/UBlog/assets/IMG/body_bg.png);}
+.feed_filter_buttons:hover {background-image:none;}
 .feed_filter_button_selected {background-image:none;}
 .feed_filter_placeholder {background-image:url(/UBlog/assets/IMG/body_bg.png);}

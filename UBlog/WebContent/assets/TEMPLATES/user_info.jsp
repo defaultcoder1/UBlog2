@@ -3,7 +3,13 @@
 <%@page import="Models.Blog" %>
 <%@page import="java.util.ArrayList" %>
 
-<% User u = (User) request.getAttribute("user"); %>
+<%
+	User u = (User) request.getAttribute("user");
+	String subscribed_blogs = "";
+	String user_blogs = "";
+	if(request.getParameter("feed") == null) subscribed_blogs = "feed_filter_button_selected";
+	else user_blogs = "feed_filter_button_selected";
+%>
 
 <div id="user_info">
   <table id="user_info_t" cellpadding="0" cellspacing="5" border="0" align="center">
@@ -52,8 +58,8 @@
   <table id="feed_filter_t" cellpadding="0" cellspacing="0" border="0" align="center">
 		<tr>
 			<td class="feed_filter_placeholder" width="30"> </td>
-			<td class="feed_filter_buttons feed_filter_button_selected calibri_bold"><a href="/UBlog/UserPage?id=<%=u.getId() %>">Subscribed Posts</a></td>
-			<td class="feed_filter_buttons calibri_bold"><a href="/UBlog/UserPage?id=<%=u.getId() %>&feed=userblogs">My Posts</a></td>
+			<td class="feed_filter_buttons <%=subscribed_blogs %> calibri_bold" href="/UBlog/UserPage?id=<%=u.getId() %>">Subscribed Posts</td>
+			<td class="feed_filter_buttons <%=user_blogs %> calibri_bold" href="/UBlog/UserPage?id=<%=u.getId() %>&feed=userblogs">My Posts</td>
 			<td class="feed_filter_placeholder"> </td>
 		</tr>
 	</table>

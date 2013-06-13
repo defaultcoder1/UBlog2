@@ -54,12 +54,18 @@ $(document).ready(function() {
 	$(".view_comments").click(function() {
 		if($(this).hasClass("hide_comments")) {
 			$(this).removeClass("hide_comments");
-			$(this).text("View Comments");
+			$(this).text("Show Comments");
 			$(this).parent().parent().parent().parent().children("tr").children(".article_comments").hide();
 		}else {
 			$(this).addClass("hide_comments");
 			$(this).text("Hide Comments")
 			$(this).parent().parent().parent().parent().children("tr").children(".article_comments").show();
 		}
+	});
+	
+	
+	$(".feed_filter_buttons").click(function() {
+		var url = $(this).attr("href");
+		window.location = url;
 	});
 });
