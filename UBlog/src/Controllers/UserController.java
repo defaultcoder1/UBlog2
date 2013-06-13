@@ -27,7 +27,7 @@ public class UserController {
 		Condition c = new Condition(true);
 		c.add("User_ID", userId);
 		db.where(c);
-		return db.get("aticle").size();
+		return db.get("article").size();
 	}
 	public Author getAuthorById(String authorId){
 		Author a;
