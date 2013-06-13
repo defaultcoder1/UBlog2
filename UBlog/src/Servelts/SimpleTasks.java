@@ -14,6 +14,7 @@ import com.mysql.jdbc.Connection;
 import Controllers.CommentController;
 import Controllers.DBConnector;
 import Controllers.LikeController;
+import Controllers.SubscribeController;
 import DB.CString;
 import DB.Condition;
 import DB.DB;
@@ -36,13 +37,7 @@ public class SimpleTasks extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
   
-    private void addSubscriber(String who,String towho,Connection con){
-    	DB db = new DB(con, "ublog");
-    	HashMap<String, String> m = new HashMap<String,String>();
-		m.put("Subscriber_ID",who);
-		m.put("Author_ID", towho);
-		db.insert("subscribe", m,null);
-    }
+    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -51,6 +46,7 @@ public class SimpleTasks extends HttpServlet {
 		String which = request.getParameter("which");
 		LikeController lc = new LikeController(con);
 		CommentController cmc = new CommentController(con);
+		SubscribeController sbc = new SubscribeController(con);
 		switch (which) {
 		case "likearticle":
 			lc.addLikeToArticle(((User)request.getSession().getAttribute("user")).getId(),
@@ -74,8 +70,13 @@ public class SimpleTasks extends HttpServlet {
 	request.getParameter("date"), con);
 			break;
 		case "addsusbcribe":
-			this.addSubscriber(((User)request.getSession().getAttribute("user")).getId(),
-		request.getParameter("towho"), con);
+			sbc.addSubscriber(((User)request.getSession().getAttribute("user")).getId(),
+		request.getParameter("towho"));
+			break;
+		case "unsusbcribe":
+			sbc.reomveSubscribe(((User)request.getSession().getAttribute("user")).getId(),
+		request.getParameter("towho"));
+			break;
 		default:
 			break;
 		}
