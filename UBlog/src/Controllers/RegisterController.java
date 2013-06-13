@@ -49,6 +49,7 @@ public class RegisterController {
 		values.put("LName", rlname);
 		values.put("EMail", remail);
 		values.put("Password", rpassword);
+		values.put("Blog_Name", rbname);
 		values.put("Image", image);
 		CString lastID = new CString("");
 		db.insert("user", values, lastID);
