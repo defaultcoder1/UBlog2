@@ -1,13 +1,24 @@
 <%@page import="Models.Comment"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Models.Blog"%>
+<%@page import="Models.User" %>
 
 <div id="common_feed">
 	<div id="common_feed_inner_box">
 		
 		<%
+			String myID = ((User) request.getSession().getAttribute("user")).getId();
 			ArrayList<Blog> blogs = (ArrayList<Blog>) request.getAttribute("blogs");
 			for(int i=0; i<blogs.size(); i++) {
+				String unlike = "";
+				String likeValue = "Like";
+				for(int k=0; k<blogs.get(i).getLikes().size(); k++) {
+					if(blogs.get(i).getLikes().get(k).getAuthorId().equals(myID)) {
+						unlike = " unlike";
+						likeValue = "Unlike";
+						break;
+					}
+				}
 		%>
 		
 		<div class="article" style="<%=(i%2 == 0) ? "float:left; clear:left" : "float:right; clear:right;" %>">
@@ -36,7 +47,7 @@
 				<tr>
 					<td class="like_comment" colspan="2">
 						<div class="like_comment_container">
-							<span class="like" articleid="<%=blogs.get(i).getId() %>">Like</span>
+							<span class="like<%=unlike %>" articleid="<%=blogs.get(i).getId() %>"><%=likeValue %></span>
 							<span class="view_comments" style="<%=blogs.get(i).getCommentNum() == 0 ? "display:none;" : "" %>">View Comments</span>
 							<span class="like_num"><%=blogs.get(i).getLikeNum() %> bloggers like this</span>
 						</div>
