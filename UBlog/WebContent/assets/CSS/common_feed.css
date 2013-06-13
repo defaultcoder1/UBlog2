@@ -52,4 +52,5 @@
 .comment_date {font-family:arial,sans-serif; font-size:11px; color:#888; padding-left:10px; padding-top:5px;}
 .comment_like {font-size:12px; font-family:arial,sans-serif; color:#507EAD; padding-left:10px; cursor:pointer;}
 .comment_like:hover {text-decoration:underline;}
-.comment_like_num {float:right; font-family:arial,sans-serif; font-size:12px; color:#444;}
+.comment_like_num {float:right; font-family:arial,sans-serif; font-size:12px; color:#444; cursor:pointer;}
+.comment_like_num:hover {text-decoration:underline;}

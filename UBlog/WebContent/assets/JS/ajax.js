@@ -45,10 +45,16 @@ $(document).ready(function() {
 	$(".comment_like").click(function() {
 		var commentid = $(this).attr("commentid");
 		var which = "likecomment";
-		if($(this).text() == "Unike") which = "unlikecomment";
+		if($(this).hasClass("unlikeCommentClass")) which = "unlikecomment";
 		likeComment(commentid, which);
-		if($(this).text() == "Unlike") $(this).text("Like");
-		else $(this).text("Unlike");
+		if($(this).hasClass("unlikeCommentClass")) {
+			$(this).removeClass("unlikeCommentClass");
+			$(this).text("Like");
+		}
+		else {
+			$(this).addClass("unlikeCommentClass");
+			$(this).text("Unlike");
+		}
 	});
 	
 });

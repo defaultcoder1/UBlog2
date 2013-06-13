@@ -116,5 +116,4 @@ public class BlogController {
 		lc.deleteLikesOfArticle(articleId);
 	}
 	
-	
 }

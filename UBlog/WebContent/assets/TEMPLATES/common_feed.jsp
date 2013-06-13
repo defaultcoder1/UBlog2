@@ -3,6 +3,17 @@
 <%@page import="Models.Blog"%>
 <%@page import="Models.User" %>
 
+
+<div class="authorPop">
+	<table class="authorPop_t" border="1">
+		<tr>
+			<td class="pop_author_avatar"><img src="http://localhost:8080/UBlog/assets/IMG/itachi.jpg" /></td>
+			<td class="pop_author_name calibri">Giorgi Cxondia</td>
+		</tr>
+	</table>
+</div>
+
+
 <div id="common_feed">
 	<div id="common_feed_inner_box">
 		
@@ -10,20 +21,9 @@
 			String myID = ((User) request.getSession().getAttribute("user")).getId();
 			ArrayList<Blog> blogs = (ArrayList<Blog>) request.getAttribute("blogs");
 			for(int i=0; i<blogs.size(); i++) {
-				String unlike = "";
-				String likeValue = "Like";
-				
-				for(int k=0; k<blogs.get(i).getLikes().size(); k++) {
-					if(blogs.get(i).getLikes().get(k).getAuthorId().equals(myID)) {
-						unlike = " unlike";
-						likeValue = "Unlike";
-						break;
-						
-					}
-				}
 		%>
 		
-		<div class="article" style="<%=(i%2 == 0) ? "float:left; clear:left" : "float:right; clear:right;" %>">
+		<div class="article" style="<%=(i%2 == 0) ? "float:left; clear:left" : "float:right; clear:right;" %>">		
 			<table class="article_t" cellpading="0" cellspacing="0" border="0">
 				<tr>
 					<td class="author_avatar" rowspan="2"><a href="/UBlog/UserPage?id=<%=blogs.get(i).getAuthorId() %>"><img src="<%=blogs.get(i).getAuthorImage() %>" /></a></td>
@@ -52,6 +52,18 @@
 				</tr>
 				<tr>
 					<td class="like_comment" colspan="2">
+						<%
+							String unlike = "";
+							String likeValue = "Like";
+							String articleLikers = "<div class='authorPop'>";
+							for(int k=0; k<blogs.get(i).getLikes().size(); k++) {
+								
+								if(blogs.get(i).getLikes().get(k).getAuthorId().equals(myID)) {
+									unlike = " unlike";
+									likeValue = "Unlike";
+								}
+							}
+						%>
 						<div class="like_comment_container">
 							<span class="like<%=unlike %>" articleid="<%=blogs.get(i).getId() %>"><%=likeValue %></span>
 							<span class="view_comments" style="<%=blogs.get(i).getCommentNum() == 0 ? "display:none;" : "" %>">Show Comments</span>
@@ -68,10 +80,13 @@
 								for(int k=0; k<cList.size(); k++) {
 									Comment c = cList.get(k);
 									String likeCommentValue = "Like";
-									/*for(int j=0; j<c.getLikes().size(); j++) {
-										if(c.getLikes().get(i).getAuthorId().equals(myID))
+									String unlikeCommentClass = "";
+									for(int j=0; j<c.getLikes().size(); j++) {
+										if(c.getLikes().get(j).getAuthorId().equals(myID))
 											likeCommentValue = "Unlike";
-									}*/
+											unlikeCommentClass = "unlikeCommentClass";
+											break;
+									}
 							%>
 								<tr>
 									<td class="comment_author_avatar" rowspan="2">
@@ -84,8 +99,8 @@
 								</tr>
 								<tr>
 									<td class="comment_date">
-										<%=c.getDate() %><span class="comment_like" commentid="<%=c.getId() %>"><%=likeCommentValue %></span>
-										<span class="comment_like_num"><%=c.getLikes() %></span>
+										<%=c.getDate() %><span class="comment_like <%=unlikeCommentClass %>" commentid="<%=c.getId() %>"><%=likeCommentValue %></span>
+										<span class="comment_like_num"><%=c.getLikes().size() %> bloggers like this</span>
 									</td>
 								</tr>
 							<% } %>
