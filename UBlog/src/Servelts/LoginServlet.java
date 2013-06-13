@@ -47,6 +47,7 @@ public class LoginServlet extends HttpServlet {
 		if(email==null){
 			request.getSession().removeAttribute("user");
 			rd = request.getRequestDispatcher("login.jsp");
+			rd.forward(request, response);
 			return;
 		}
 		if(email=="" || password=="" || email==null){
