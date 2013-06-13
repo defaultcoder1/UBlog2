@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mysql.jdbc.Connection;
 
+import Controllers.CommentController;
 import Controllers.DBConnector;
+import Controllers.LikeController;
 import DB.CString;
 import DB.Condition;
 import DB.DB;
@@ -33,20 +35,7 @@ public class SimpleTasks extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-    private void addLikeToArticle(String userid,String blogID,Connection con){
-    	DB db = new DB(con, "ublog");
-    	HashMap<String, String> m = new HashMap<String,String>();
-		m.put("User_ID",userid);
-		m.put("Article_ID", blogID);
-		db.insert("like_article", m,null);
-    }
-    private void addLikeToComment(String userid,String commentId,Connection con){
-    	DB db = new DB(con, "ublog");
-    	HashMap<String, String> m = new HashMap<String,String>();
-		m.put("User_ID",userid);
-		m.put("Comment_ID", commentId);
-		db.insert("like_comment", m,null);
-    }
+  
     private void addSubscriber(String who,String towho,Connection con){
     	DB db = new DB(con, "ublog");
     	HashMap<String, String> m = new HashMap<String,String>();
@@ -54,29 +43,31 @@ public class SimpleTasks extends HttpServlet {
 		m.put("Author_ID", towho);
 		db.insert("subscribe", m,null);
     }
-    private void addComment(String articleid,String userid,String content,String date,Connection con){
-    	DB db = new DB(con, "ublog");
-    	HashMap<String, String> m = new HashMap<String,String>();
-		m.put("Article_ID",articleid);
-		m.put("User_ID",userid);
-		m.put("Content", content);
-		m.put("Date", date);
-		db.insert("comment", m,null);
-    }
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Connection con = (Connection) ((DBConnector)getServletContext().getAttribute("DBC")).getConnection();
 		String which = request.getParameter("which");
+		LikeController lc = new LikeController(con);
+		CommentController cmc = new CommentController(con);
 		switch (which) {
 		case "likearticle":
-			this.addLikeToArticle(((User)request.getSession().getAttribute("user")).getId(),
+			lc.addLikeToArticle(((User)request.getSession().getAttribute("user")).getId(),
 					request.getParameter("articleid"), con);
 			break;
 		case "likecomment":
-			
+			lc.addLikeToComment(((User)request.getSession().getAttribute("user")).getId(),
+					request.getParameter("commentid"), con);
 			break;
+		case "addcomment":
+			cmc.addComment(request.getParameter("articleid"), 
+((User)request.getSession().getAttribute("user")).getId(), request.getParameter("content"),
+	request.getParameter("date"), con);
+			break;
+		case "addsusbcribe":
+			this.addSubscriber(((User)request.getSession().getAttribute("user")).getId(),
+		request.getParameter("towho"), con);
 		default:
 			break;
 		}

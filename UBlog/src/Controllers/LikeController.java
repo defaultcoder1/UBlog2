@@ -2,6 +2,7 @@ package Controllers;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import DB.Condition;
 import DB.DB;
@@ -70,5 +71,18 @@ public class LikeController {
 		db.where(con);
 		db.delete("like_article");
 	}
-	
+	  public void addLikeToArticle(String userid,String blogID,Connection con){
+	    	DB db = new DB(con, "ublog");
+	    	HashMap<String, String> m = new HashMap<String,String>();
+			m.put("User_ID",userid);
+			m.put("Article_ID", blogID);
+			db.insert("like_article", m,null);
+	    }
+	 public void addLikeToComment(String userid,String commentId,Connection con){
+	    	DB db = new DB(con, "ublog");
+	    	HashMap<String, String> m = new HashMap<String,String>();
+			m.put("User_ID",userid);
+			m.put("Comment_ID", commentId);
+			db.insert("like_comment", m,null);
+	 }
 }
