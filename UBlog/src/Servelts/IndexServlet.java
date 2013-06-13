@@ -38,17 +38,17 @@ public class IndexServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd;
 		if(request.getSession().getAttribute("user")!=null){
-			if(request.getParameter("content")!=null && !request.getParameter("content").equals("")){
+			if(request.getParameter("article_content")!=null && !request.getParameter("article_content").equals("")){
 				BlogController bc = new BlogController((Connection) ((DBConnector)getServletContext().getAttribute("DBC")).getConnection());
 				User u = (User)(request.getSession().getAttribute("user"));
-				String newTags = request.getParameter("tags");
+				String newTags = request.getParameter("article_tags");
 				StringTokenizer tok = new StringTokenizer(newTags);
 				ArrayList<String> arr = new ArrayList<String>();
 				while(tok.hasMoreTokens())
 					arr.add(tok.nextToken());
-				bc.addArticle(request.getParameter("image"), request.getParameter("title"), 
-						request.getParameter("content"), u.getId(),
-						request.getParameter("category"),arr);
+				bc.addArticle(request.getParameter("article_image"), request.getParameter("article_title"), 
+						request.getParameter("article_content"), u.getId(),
+						"Science",arr);
 				request.setAttribute("blogs" , bc.getBlogs(0, 20));
 				rd = request.getRequestDispatcher("index.jsp");
 			}

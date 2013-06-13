@@ -6,7 +6,7 @@
 	<div id="common_feed_inner_box">
 		
 		<%
-			ArrayList<Blog> blogs = (ArrayList<Blog>) request.getAttribute("blogs");
+			ArrayList<Blog> 	blogs = (ArrayList<Blog>) request.getAttribute("blogs");
 			if(blogs == null) {
 				blogs = (ArrayList<Blog>) request.getAttribute("myblogs");
 			}
@@ -16,7 +16,7 @@
 		<div class="article">
 			<table class="article_t" cellpading="0" cellspacing="0" border="0">
 				<tr>
-					<td class="author_avatar" rowspan="2"><img src="/UBlog/assets/IMG/no_avatar.png" /></td>
+					<td class="author_avatar" rowspan="2"><img src="<%=blogs.get(i).getAuthorImage() %>" /></td>
 					<td class="article_title"><a href="/UBlog/Blog?id=<%=blogs.get(i).getId() %>"><%=blogs.get(i).getTitle() %></a> (<%=blogs.get(i).getCategory()%>)</td>
 				</tr>
 				<tr><td class="article_date"><%=blogs.get(i).getDate() %></td></tr>
@@ -40,7 +40,8 @@
 					<td class="like_comment" colspan="2">
 						<div class="like_comment_container">
 							<span class="like">Like</span>
-							<span class="view_comments">View Comments</span>
+							<span class="view_comments" style="<%=blogs.get(i).getCommentNum() == 0 ? "display:none;" : "" %>">View Comments</span>
+							<span class="like_num"><%=blogs.get(i).getLikeNum() %> bloggers like this</span>
 						</div>
 					</td>
 				</tr>

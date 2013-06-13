@@ -5,7 +5,7 @@
 	
 	<iframe id="gallery_pop" src="/UBlog/Gallery"></iframe>
 		
-	<form id="article_form" action="" method="post">
+	<form id="article_form" action="/UBlog/Index" method="post">
 	<div id="editor_container">
 		<table id="editor_container_t" cellpadding="0" cellspacing="0" border="0" align="center">
 			<tr>
@@ -45,6 +45,8 @@
 					<div id="post_image_box"><img id="post_image" src="" /></div>
 					<button type="button" id="open_gallery">Choose from gallery</button>
 					<input type="hidden" name="article_image" id="article_image" />
+					
+					<textarea name="article_tags"></textarea>
 				</td>	
 			</tr>
 		</table>

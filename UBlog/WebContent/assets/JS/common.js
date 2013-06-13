@@ -47,4 +47,16 @@ $(document).ready(function() {
 		var catValue = $(this).text();
 		window.location = "/UBlog/Search?category="+catValue;
 	});
+	
+	$(".view_comments").click(function() {
+		if($(this).hasClass("hide_comments")) {
+			$(this).removeClass("hide_comments");
+			$(this).text("View Comments");
+			$(this).parent().parent().parent().parent().children("tr").children(".article_comments").hide();
+		}else {
+			$(this).addClass("hide_comments");
+			$(this).text("Hide Comments")
+			$(this).parent().parent().parent().parent().children("tr").children(".article_comments").show();
+		}
+	});
 });

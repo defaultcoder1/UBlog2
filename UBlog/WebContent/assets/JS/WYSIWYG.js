@@ -42,6 +42,7 @@ $(document).ready(function() {
 	$("#cancel_button").click(function() { window.location = "UserPage"; });
 	$("#publish_button").click(function() {
 		$("#article_content").val($("#editor_area").contents().find("body").html());
+		$("#article_form").submit();
 	});
 	
 	$("#open_gallery").click(function() {
