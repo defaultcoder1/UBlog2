@@ -52,4 +52,23 @@ public class LikeController {
 		}
 		return arr;
 	}
+	
+	public void unlikeComment(String commentId, String userId){
+		DB db = new DB(this.con, "ublog");
+		Condition con = new Condition(true);
+		con.add("Comment_ID", commentId);
+		con.add("User_ID", userId);
+		db.where(con);
+		db.delete("like_comment");
+		
+	}
+	public void unlikeArticle(String articleId, String userId){
+		DB db = new DB(this.con, "ublog");
+		Condition con = new Condition(true);
+		con.add("Article_ID", articleId);
+		con.add("User_ID", userId);
+		db.where(con);
+		db.delete("like_article");
+	}
+	
 }
