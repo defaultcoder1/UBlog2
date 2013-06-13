@@ -15,6 +15,7 @@ import com.mysql.jdbc.Connection;
 
 import Controllers.DBConnector;
 import Controllers.UserController;
+import Models.Author;
 import Models.Blog;
 import Models.User;
 
@@ -34,6 +35,16 @@ public class UserPageServlet extends HttpServlet {
     }
     private void addRequestAttributes(HttpServletRequest request,User u,UserController uc){
     	request.setAttribute("user", u);
+    	ArrayList<Author> arr = new ArrayList<Author>();
+    	for(int i=0;i<u.getSubscribersNum();i++){
+    		arr.add(uc.getAuthorById(u.getSubscriber(i)));
+    	}
+    	request.setAttribute("subscribers", arr);
+    	ArrayList<Author> arr2 = new ArrayList<Author>();
+    	for(int i=0;i<u.getSubscriptionsNum();i++){
+    		arr2.add(uc.getAuthorById(u.getSubscription(i)));
+    	}
+    	request.setAttribute("subscriptions", arr2);
 		ArrayList<Blog> myBlogs = uc.getUserBlogs(u.getId());
 		request.setAttribute("myblogs", myBlogs);
 		ArrayList<Blog> suBlogs = new ArrayList<Blog>();

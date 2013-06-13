@@ -3,10 +3,13 @@ package Controllers;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.apache.tomcat.dbcp.dbcp.DbcpException;
+
 import DB.Condition;
 import DB.DB;
 import DB.ResultList;
 import DB.Row;
+import Models.Author;
 import Models.Blog;
 import Models.User;
 
@@ -19,7 +22,17 @@ public class UserController {
 	public UserController(Connection connection) {
 		this.con = connection;
 	}
-
+	public Author getAuthorById(String authorId){
+		Author a;
+		DB db = new DB(this.con,"ublog");
+		Condition con = new Condition(true);
+		con.add("User_ID", authorId);
+		db.where(con);
+		ResultList rl = db.get("user");
+		a = new Author(authorId, rl.first().get("FName"), rl.first().get("LName"),
+				rl.first().get("Image"));
+		return a;
+	}
 	public User getUserById(String userId) {
 		DB db = new DB(this.con, "ublog");
 		Condition cnd = new Condition(true);
