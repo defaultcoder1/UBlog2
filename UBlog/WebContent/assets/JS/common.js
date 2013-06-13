@@ -1,4 +1,7 @@
 $(document).ready(function() {
+	
+	var category = $("#categories").attr("category");
+	$(".category_item[category = '"+category+"']").addClass("category_selected");
 
 	$("#logo").click(function() {
 		window.location = "Index";
@@ -43,7 +46,7 @@ $(document).ready(function() {
 		}
 	});
 	
-	$(".categorie_item").click(function() {
+	$(".category_item").click(function() {
 		var catValue = $(this).text();
 		window.location = "/UBlog/Search?category="+catValue;
 	});
