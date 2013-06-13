@@ -7,21 +7,31 @@ $(document).ready(function() {
     	$("#logo").attr("src", "/UBlog/assets/IMG/logos/logo_white.png");
     });
 	
-	function likeArticle(articleid) {
+	function likeArticle(articleid, which) {
         $.ajax({
             url: "/UBlog/SimpleTasks",
             type: "POST",
             cache: false,
             dataType: "HTML",
-            data: {articleid: articleid, which: "likearticle"},
+            data: {articleid: articleid, which: which},
             success: function (data) {
-            	alert("liked");
+            	
             }
         });
     }
 	
 	$(".like").click(function() {
-		likeArticle($(this).attr("articleid"));
+		var articleid = $(this).attr("articleid");
+		var which = "likearticle";
+		if($(this).hasClass("unlike")) which = "unlikearticle";
+		likeArticle(articleid, which);
+		if($(this).hasClass("unlike")) {
+			$(this).removeClass("unlike");
+			$(this).text("Like");
+		}else {
+			$(this).addClass("unlike");
+			$(this).text("Unike");
+		}
 	});
 	
 });
