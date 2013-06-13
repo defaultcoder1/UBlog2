@@ -45,13 +45,17 @@ public class UserPageServlet extends HttpServlet {
     		arr2.add(uc.getAuthorById(u.getSubscription(i)));
     	}
     	request.setAttribute("subscriptions", arr2);
-		ArrayList<Blog> myBlogs = uc.getUserBlogs(u.getId());
-		request.setAttribute("myblogs", myBlogs);
-		ArrayList<Blog> suBlogs = new ArrayList<Blog>();
-		for(int i=0;i<u.getSubscriptionsNum();i++){
-			suBlogs.addAll(uc.getUserBlogs(u.getSubscription(i)));
-		}
-		request.setAttribute("sublogs", suBlogs);
+    	ArrayList<Blog> blogs;
+    	if(request.getParameter("feed")=="myblogs"){
+    		blogs = uc.getUserBlogs(u.getId());
+    		request.setAttribute("blogs", blogs);
+    	}else{
+    		blogs = new ArrayList<Blog>();
+    		for(int i=0;i<u.getSubscriptionsNum();i++){
+    			blogs.addAll(uc.getUserBlogs(u.getSubscription(i)));
+    		}
+    	}
+		request.setAttribute("blogs", blogs);
     }
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
