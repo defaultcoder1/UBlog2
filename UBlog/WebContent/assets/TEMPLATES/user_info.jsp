@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="Models.User"%>
+<%@page import="Models.Blog" %>
+<%@page import="java.util.ArrayList" %>
 
 <% User u = (User) request.getAttribute("user"); %>
 
@@ -36,7 +38,7 @@
 		</tr>
 		<tr>
 			<td id="user_posts">
-				<p id="posts_val" class="calibri_bold">1</p>
+				<p id="posts_val" class="calibri_bold"><%=((ArrayList<Blog>)request.getAttribute("myblogs")).size() %></p>
 				<p id="posts_desc" class="calibri">Posts</p>
 			</td>
 		</tr>

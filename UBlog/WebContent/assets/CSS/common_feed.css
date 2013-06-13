@@ -3,7 +3,7 @@
 #common_feed {width:850px; margin-left:25px; padding-top:25px; padding-bottom:25px;
 	box-shadow:inset 0px 0px 15px #333;}
 #common_feed_inner_box {width:805px; margin:0 auto; overflow:auto;}
-.article {width:397.5px; float:left; background-color:#FFF;
+.article {width:397.5px; float:left; background-color:#FFF; clear:right;
 	margin-bottom:5px; margin-left:5px;}
 .article_t {width:100%; padding:7px;}
 .author_avatar {width:60px; vertical-align:top; text-align:center;}
@@ -20,10 +20,10 @@
 .like_comment {padding-top:7px;}
 .like_comment_container {font-family:arial,sans-serif; font-size:12px; color:#507EAD; font-weight:bold;
 	overflow:auto;}
-.like {display:block; padding:7px; padding-left:10px; padding-right:10px; float:left; border-right:1px solid #DDD;
+.like {display:block; padding:7px; padding-left:10px; padding-right:10px; float:left;
 	background-color:#FFF; cursor:pointer;}
 .view_comments {display:block; padding:7px; padding-left:10px; padding-right:10px; float:left;
-	background-color:#FFF; cursor:pointer;}
+	background-color:#FFF; cursor:pointer; border-left:1px solid #DDD;}
 .hide_comments {background-color:#507EAD; color:#FFF;}
 .like:hover, .view_comments:hover {background-color:#507EAD; color:#FFF;}
 .like_num {float:right; padding:7px; color:#444; cursor:pointer;}
