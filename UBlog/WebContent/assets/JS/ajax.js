@@ -7,17 +7,21 @@ $(document).ready(function() {
     	$("#logo").attr("src", "/UBlog/assets/IMG/logos/logo_white.png");
     });
 	
-	/*function getBlogsByCategory(category) {
+	function likeArticle(articleid) {
         $.ajax({
-            url: "/UBlog/Search",
+            url: "/UBlog/SimpleTasks",
             type: "POST",
             cache: false,
             dataType: "HTML",
-            data: {category: category},
+            data: {articleid: articleid},
             success: function (data) {
-            	alert(data);
+            	alert(liked);
             }
         });
-    }*/
+    }
+	
+	$(".like").click(function() {
+		likeArticle($(this).attr("articleid"));
+	});
 	
 });

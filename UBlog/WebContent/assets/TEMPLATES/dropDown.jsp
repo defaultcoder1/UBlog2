@@ -10,7 +10,7 @@
 			</td>
 		</tr>
 			<tr><td id="settings">Settings</td></tr>
-			<tr><td id="sign_out">Sign Out</td></tr>
+			<tr><td id="sign_out"><a href="/UBlog/Login">Sign Out</a></td></tr>
 	</table>
 </div>
 
