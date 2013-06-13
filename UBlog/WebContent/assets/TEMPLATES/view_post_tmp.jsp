@@ -1,20 +1,19 @@
 <%@page import="Models.Comment"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="oracle.jrockit.jfr.settings.JSONElement"%>
 <%@page import="Models.Blog"%>
 <%@page import="java.lang.Object" %>
 <style>
 	#view_post {padding-top:25px; width:100%;}
 	#view_post_inner_box {width:850px; margin:0 auto; background-color:#FFF;
 		box-shadow:0px 0px 10px #FFF;}
-	#view_post_inner_box_t {}
+	#view_post_inner_box_t {width:100%;}
 	#full_author_image_container {width:45px; height:45px; padding:7px; padding-left:15px; padding-right:15px;
 		text-align:center; vertical-align:middle;}
 	#full_author_image {max-width:45px; max-height:45px; border-radius:2px;}
 	#full_author_name_container {padding-right:10px; vertical-align:top;}
 	#full_author_name {margin:0px; font-size:13px; color:#555; margin-left:10px; margin-top:15px;}
 	#full_article_date {margin:0px; font-size:12px; color:#888; margin-left:10px; margin-top:6px;}
-	#full_article_title_container {width:500px; text-align:right; vertical-align:middle; padding-left:20px;
+	#full_article_title_container {text-align:right; vertical-align:middle; padding-left:20px;
 		padding-right:50px;}
 	#full_article_title {margin:0px; font-size:16px; color:#507EAD; line-height:20px;}
 	#full_article_content {padding:20px; font-family:arial,sans-serif; font-size:12px; color:#424242; line-height:20px;

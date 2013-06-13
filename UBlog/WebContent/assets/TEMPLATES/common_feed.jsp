@@ -7,9 +7,6 @@
 		
 		<%
 			ArrayList<Blog> blogs = (ArrayList<Blog>) request.getAttribute("blogs");
-			if(blogs == null) {
-				blogs = (ArrayList<Blog>) request.getAttribute("sublogs");
-			}
 			for(int i=0; i<blogs.size(); i++) {
 		%>
 		
