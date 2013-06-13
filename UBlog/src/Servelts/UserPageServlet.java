@@ -49,7 +49,7 @@ public class UserPageServlet extends HttpServlet {
     	}
     	request.setAttribute("subscriptions", arr2);
     	ArrayList<Blog> blogs;
-    	if(request.getParameter("feed")=="myblogs"){
+    	if(request.getParameter("feed")!=null && request.getParameter("feed").equals("myblogs")){
     		blogs = uc.getUserBlogs(u.getId());
     		request.setAttribute("blogs", blogs);
     	}else{
