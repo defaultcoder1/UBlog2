@@ -78,7 +78,7 @@
 								<tr>
 									<td class="comment_date">
 										<%=c.getDate() %><span class="comment_like">Like</span>
-										<span class="comment_like_num"><%=c.getLikes() %></span>
+										<span class="comment_like_num"><%=c.getLikes().size() %></span>
 									</td>
 								</tr>
 							<% } %>

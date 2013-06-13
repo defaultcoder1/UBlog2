@@ -47,7 +47,7 @@ public class CommentController {
 		Condition con = new Condition(true);
 		con.add("Comment_ID", commentId);
 		db.where(con);
-		db.delete("Comment");
+		db.delete("comment");
 		db.delete("like_comment");
 	}
 	public void deleteCommentsOfArticle(String articleId){
@@ -58,8 +58,7 @@ public class CommentController {
 		 db.where(c);
 		 ResultList rl = db.get("comment");
 		 for(int i=0;i<rl.size();i++){
-			 lc.deleteLikesOfComment(rl.get(i).get("Comment_ID"));
+			this.deleteComment(rl.get(i).get("Comment_ID"));
 		 }
-		 db.delete("comment");
 	}
 }

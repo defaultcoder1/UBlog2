@@ -11,6 +11,8 @@ public class Comment extends Readings{
 			String authorname,String authorlname,String authorimage,ArrayList<Like> likes){
 		super(id, content,date_time, userId, authorname, authorlname,authorimage);
 		this.blogId = blogId;
+		this.likes = new ArrayList<Like>();
+		this.likes.addAll(likes);
 	}
 	public String getBlogId(){
 		return this.blogId;
