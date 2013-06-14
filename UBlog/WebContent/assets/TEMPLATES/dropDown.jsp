@@ -1,3 +1,4 @@
+<%@page import = "Models.User" %>
 <div id="arrow_dropDown" class="dropDown">
 	<table id="arrow_dropDown_t" cellpadding="0" cellspacing="0" border="0">
 		<caption style="position:relative;">
@@ -5,7 +6,7 @@
 		</caption>
 		<tr>
 			<td id="name_edit_profile">
-				<p id="arrow_dropDown_name">Giorgi</p>
+				<p id="arrow_dropDown_name"><%=((User)request.getSession().getAttribute("user")).getName() %></p>
 				<p id="arrow_dropDown_edit_profile">Edit Profile</p>
 			</td>
 		</tr>

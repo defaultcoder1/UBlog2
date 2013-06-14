@@ -1,5 +1,7 @@
 <div id="content">
+<%@page import="Models.User" %>
 
+<% User u = (User)request.getSession().getAttribute("user"); %>
 	<style type="text/css">
 		#edit_profile {width:250px; padding:20px; background-color:#FFF; margin:0 auto;
 			box-shadow:0px 0px 20px #FFF; text-align:center;}
@@ -14,13 +16,13 @@
 	
 	<div id="edit_profile">
 		<form action="/UBlog/UserPage" method="post">
-			<input type="text" name="rfname" placeholder="First Name:" /><br />
-			<input type="text" name="rlname" placeholder="Last Name:" /><br />
-			<input type="text" name="rbname" placeholder="Blog's Name:" /><br />
-			<input type="text" name="remail" placeholder="Email:" /><br />
+			<input type="text" name="rfname" placeholder="First Name:" value = "<%=u.getName() %>"  /><br />
+			<input type="text" name="rlname" placeholder="Last Name:" value = "<%=u.getLastName() %>"/><br />
+			<input type="text" name="rbname" placeholder="Blog's Name:" value = "<%=u.getBlogName() %>"/><br />
+			<input type="text" name="remail" placeholder="Email:" value = "<%=u.getEmail() %>"/><br />
 			<input type="password" name="rpassword" placeholder="Password:" /><br />
 			<input type="password" name="rrpassword" placeholder="Repeat Password:" /><br />
-			<input type="text" name="rimage" placeholder="IMG URL:" /><br />
+			<input type="text" name="rimage" placeholder="IMG URL:" value = "<%=u.getImage() %>"/><br />
 			<input type="hidden" name="submit" />
 			<button type="submit" id="submit">Edit Profile</button>
 		</form>
