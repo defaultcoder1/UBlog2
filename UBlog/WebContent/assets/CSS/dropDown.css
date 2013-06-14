@@ -1,6 +1,6 @@
 @CHARSET "UTF-8";
 
-#arrow_dropDown {display:none; position:absolute; right:30px; top:50px; width:150px;
+#arrow_dropDown {display:none; position:fixed; margin-left:720px;  top:50px; width:150px;
 	background-image:url(/UBlog/assets/IMG/trans_black.png); border:1px solid #000; border-radius:2px;
 	box-shadow:0 5px 10px rgba(0,0,0,.2); z-index:1;}
 #arrow_dropDown_t {width:100%; padding-top:5px; padding-bottom:5px;}
@@ -14,7 +14,7 @@
 #arrow_dropDown_pointer {position:absolute; right:37px; top:-9px;}
 
 
-#notification_dropDown {display:none; position:absolute; right:150px; top:50px; width:300px;
+#notification_dropDown {display:none; position:fixed; left:670px;  top:50px; width:300px;
 	background-image:url(/UBlog/assets/IMG/trans_black.png); border:1px solid #000; border-radius:2px;
 	box-shadow:0 5px 10px rgba(0,0,0,.2); z-index:1;}
 #notification_dropDown_t {width:100%; padding-top:5px; padding-bottom:5px;}

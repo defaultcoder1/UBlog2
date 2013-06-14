@@ -9,7 +9,7 @@ public class FileUploadController {
 	
 	public static boolean processFile(String name, FileItemStream item, String userID) {
 		try {
-			File f = new File("C:"+File.separator+"Users"+File.separator+"Gigi Pataraia"+File.separator+"git"+File.separator+"UBlog2"+File.separator+"UBlog"+File.separator+"WebContent"+File.separator+"user_uploads"+File.separator+userID);
+			File f = new File("C:"+File.separator+"Users"+File.separator+"GiorgiTS"+File.separator+"git"+File.separator+"UBlog2"+File.separator+"UBlog"+File.separator+"WebContent"+File.separator+"user_uploads"+File.separator+userID);
 			if(!f.exists()) f.mkdir();
 			File savedFile = new File(f.getAbsolutePath() + File.separator + name + "." + item.getName().substring(item.getName().length()-3));
 			FileOutputStream fos = new FileOutputStream(savedFile);

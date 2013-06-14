@@ -1,6 +1,11 @@
 <%@page import="Models.User"%>
 <% User user = (User) request.getSession().getAttribute("user"); %>
 
+<input type="hidden" id="default_authorPop_entry" value="<tr id='<%=user.getId() %>'><td class='pop_author_avatar'><img src='<%=user.getImage() %>' /></td><td class='pop_author_name calibri_bold'><%=user.getName() + " " + user.getLastName() %></td></tr>" />
+<input type="hidden" id="superUserID" value="<%=user.getId() %>" />
+<input type="hidden" id="superUserIMG" value="<%=user.getImage() %>" />
+
+
 <div style="position:relative; height:40px;">
 	<%@include file="dropDown.jsp" %>
 </div>

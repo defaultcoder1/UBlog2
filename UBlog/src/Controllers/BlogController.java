@@ -86,6 +86,7 @@ public class BlogController {
 		Condition con = new Condition(true);
 		con.add("Article_ID", blog_id);
 		db.where(con);
+		db.order("Date DESC");
 		CommentController cmc= new CommentController(this.con);
 		ResultList rl = db.get("comment");
 		ArrayList<Comment> arr = new ArrayList<Comment>();

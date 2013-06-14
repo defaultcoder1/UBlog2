@@ -48,7 +48,7 @@ public class IndexServlet extends HttpServlet {
 					arr.add(tok.nextToken());
 				bc.addArticle(request.getParameter("article_image"), request.getParameter("article_title"), 
 						request.getParameter("article_content"), u.getId(),
-						"Science",arr);
+						request.getParameter("article_category"),arr);
 				request.setAttribute("blogs" , bc.getBlogs(0, 20));
 				rd = request.getRequestDispatcher("index.jsp");
 			}

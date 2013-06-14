@@ -28,9 +28,13 @@ html, body {height:100%; margin:0px; background-image:url(/UBlog/assets/IMG/body
 
 #content {width:100%; padding-bottom:25px; background-image:url(/UBlog/assets/IMG/trans_blue.png);}
 
-.authorPop {position:fixed; top:100px; left:25%; width:500px; max-height:400px;
-	background-image:url(/UBlog/assets/IMG/trans_black.png); z-index:5; padding:20px; overflow-auto;}
+.authorPop {display:none; position:fixed; top:65px; width:360px; max-height:400px;
+	background-image:url(/UBlog/assets/IMG/trans_black.png); z-index:5; padding:20px; overflow-y:auto;
+	box-shadow:0px 0px 10px #FFF;}
 .authorPop_t {width:100%; background-image:url(/UBlog/assets/IMG/trans_blue.png);}
-.pop_author_avatar {width:60px; height:60px; vertical-align:top; text-align:center;}
-.pop_author_avatar img {max-width:60px; max-height:60px;}
-.pop_author_name {font-size:13px; color:#FFF;}
+.authorPop_t tr {cursor:pointer;}
+.authorPop_t tr td {border-top:1px solid #000;}
+.authorPop_t tr:first-child td {border-top:none;}
+.pop_author_avatar {width:50px; height:50px; vertical-align:top; text-align:center; padding:5px;}
+.pop_author_avatar img {max-width:50px; max-height:50px;}
+.pop_author_name {font-size:15px; color:#FFF; padding:10px; vertical-align:top;}

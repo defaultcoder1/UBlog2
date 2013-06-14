@@ -70,6 +70,7 @@ public class UserController {
 		Condition cnd = new Condition(true);
 		cnd.add("User_ID", userId);
 		db.where(cnd);
+		db.order("Date DESC");
 		ResultList rl = db.get("article");
 		ArrayList<Blog> userBlogs = new ArrayList<Blog>();
 		for (int i = 0; i < rl.size(); i++) {

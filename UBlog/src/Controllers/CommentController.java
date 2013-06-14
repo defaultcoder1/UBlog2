@@ -33,13 +33,12 @@ public class CommentController {
 		url.first().get("FName"), url.first().get("LName"),url.first().get("Image"), lc.getCommentLikes(commentId));
 		return c;
 	}
-	public void addComment(String articleid,String userid,String content,String date,Connection con){
-	    DB db = new DB(con, "ublog");
+	public void addComment(String articleid,String userid,String content){
+	    DB db = new DB(this.con, "ublog");
 	    HashMap<String, String> m = new HashMap<String,String>();
 		m.put("Article_ID",articleid);
 		m.put("User_ID",userid);
 		m.put("Content", content);
-		m.put("Date", date);
 		db.insert("comment", m,null);
 	}
 	public void deleteComment(String commentId){

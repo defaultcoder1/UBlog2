@@ -1,3 +1,4 @@
+<%@page import="Models.User"%>
 <%@page import="Models.Comment"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Models.Blog"%>
@@ -20,6 +21,15 @@
 		border-top:1px solid #E8E8E8;}
 	#full_article_comment_separator {width:100%; height:20px; background-image:url(/UBlog/assets/IMG/body_bg.png);
 		margin-top:25px; margin-bottom:25px;}
+	#like_info {border-top:1px solid #DDD; padding:10px; font-family:arial,sans-serif; font-size:12px;
+		color:#424242; padding-left:20px;}
+	#full_article_like {font-size:12px; font-family:arial,sans-serif; color:#507EAD; font-weight:bold;
+		cursor:pointer; padding-right:20px;}
+	#full_article_like:hover {text-decoration:underline;}
+	#full_article_like_num {font-family:arial,sans-serif; font-size:12px; color:#424242;}
+	#full_article_like_number {font-weight:bold;}
+	#bloggers {border-top:1px solid #DDD; padding:10px; padding-bottom:0px; overflow:auto; box-shadow:inset 0px 0px 10px #999;}
+	#bloggers img {display:block; float:left; max-width:50px; max-height:50px; padding-left:10px; padding-bottom:10px;}
 		
 	#article_additional {width:850px; margin:0 auto;}
 	#article_additional_t {width:100%;}
@@ -32,7 +42,13 @@
 	.full_article_comment_content {vertical-align:top; padding:10px; font-family:arial,sans-serif; font-size:12px;
 		line-height:18px; color:#666; padding-left:0px;}
 	.full_article_comment_author_name {font-weight:bold; color:#507EAD; padding-right:7px;}
-	.full_article_comment_date {margin:0px; margin-top:1px; font-size:11px; color:#888; text-align:right;}
+	.full_article_comment_date {margin:0px; margin-top:1px; font-size:11px; color:#888;}
+	.full_article_comment_like {font-family:arial,sans-serif; font-size:12px; color:#507EAD; padding-left:10px;
+		cursor:pointer;}
+	.full_article_comment_like:hover {text-decoration:underline;}
+	.full_article_comment_like_num {float:right; font-size:12px; font-family:arial,sans-serif; color:#555; cursor:pointer;}
+	.full_article_comment_like_num:hover {text-decoration:underline;}
+	.full_article_comment_like_number {font-weight:bold;}
 	
 	#add_comment_box {width:100%; margin-bottom:10px; border-bottom:1px solid #CCC; padding-bottom:7px;}
 	#add_comment_box_t {width:100%;}
@@ -48,8 +64,18 @@
 
 
 <%
+	User u = (User) request.getSession().getAttribute("user");
 	Blog b = (Blog) request.getAttribute("blog");
 	ArrayList<Comment> cl = b.getComments();
+	String likeValue = "Like";
+	String unlike = "";
+	for(int i=0; i<b.getLikeNum(); i++) {
+		if(b.getLikes().get(i).getAuthorId().equals(u.getId())) {
+			likeValue = "Unlike";
+			unlike = "full_unlike";
+			break;
+		}
+	}
 %>
 
 
@@ -60,10 +86,10 @@
 			<table id="view_post_inner_box_t" cellpadding="0" cellspacing="0" border="0">
 				<tr>
 					<td id="full_author_image_container">
-						<img id="full_author_image" src="<%=b.getAuthorImage() %>" />
+						<a href="/UBlog/UserPage?id=<%=b.getAuthorId() %>"><img id="full_author_image" src="<%=b.getAuthorImage() %>" /></a>
 					</td>
 					<td id="full_author_name_container">
-						<p id="full_author_name" class="calibri_bold"><%=b.getAuthorName() + " " + b.getAuthorLastName() %></p>
+						<p id="full_author_name" class="calibri_bold"><a style="text-decoration:none; color:inherit;" href="/UBlog/UserPage?id=<%=b.getAuthorId() %>"><%=b.getAuthorName() + " " + b.getAuthorLastName() %></a></p>
 						<p id="full_article_date" class="calibri"><%=b.getDate() %></p>
 					</td>
 					<td id="full_article_title_container">
@@ -73,6 +99,26 @@
 				<tr>
 					<td id="full_article_content" colspan="3">
 						<%=b.getContent() %>
+					</td>
+				</tr>
+				<tr>
+					<td id="bloggers" colspan="3">
+						<%
+							for(int i=0; i<b.getLikeNum(); i++) {
+						%>
+						
+								<a href="/UBlog/UserPage?id=<%=b.getLikes().get(i).getAuthorId() %>"><img id="<%=b.getLikes().get(i).getAuthorId() %>" src="<%=b.getLikes().get(i).getAuthorImage() %>" /></a>
+						
+						<% } %>
+					</td>
+				</tr>
+				<tr>
+					<td id="like_info" colspan="3">
+						<font id="full_article_like" blogid="<%=b.getId() %>" class="<%=unlike %>"><%=likeValue %></font>
+						<font id="full_article_like_num">
+							<font id="full_article_like_number"><%=b.getLikeNum() %></font>
+							bloggers like this
+						</font>
 					</td>
 				</tr>
 			</table>
@@ -98,20 +144,41 @@
 					</div>
 				
 				
+					<div id="prependable"></div>
+				
 					<%
 						for(int i=0; i<cl.size(); i++) {
+							Comment c = cl.get(i);
+							String likeCommentValue = "Like";
+							String unlikeCommentClass = "";
+							String commentLikers = "<div class='authorPop'><table class='authorPop_t' cellpadding='0' cellspacing='0' border='0'>";
+							for(int j=0; j<c.getLikes().size(); j++) {
+								commentLikers += "<tr id='"+c.getLikes().get(j).getAuthorId()+"'><td class='pop_author_avatar'><img src='"+c.getLikes().get(j).getAuthorImage()+"' /></td><td class='pop_author_name calibri_bold'>"+c.getLikes().get(j).getAuthorName() + " " + c.getLikes().get(j).getAuthorLastName() +"</td></tr>";
+								if(c.getLikes().get(j).getAuthorId().equals(u.getId()))
+									likeCommentValue = "Unlike";
+									unlikeCommentClass = "unlikeCommentClass";
+							}
+							commentLikers += "</table></div>";
 					%>
-				
+					
 					<div class="full_article_comment">
+						<%=commentLikers %>
 						<table class="full_article_comment_t" cellpadding="0" cellspacing="0" border="0">
 							<tr>
 								<td class="full_article_comment_author_avatar">
-									<img src="<%=cl.get(i).getAuthorImage() %>" />
+									<a href="/UBlog/UserPage?id=<%=cl.get(i).getAuthorId() %>"><img src="<%=cl.get(i).getAuthorImage() %>" /></a>
 								</td>
 								<td class="full_article_comment_content">
-									<font class="full_article_comment_author_name"><%=cl.get(i).getAuthorName() + " " + cl.get(i).getAuthorLastName() %></font>
+									<font class="full_article_comment_author_name"><a style="text-decoration:none; color:inherit;" href="/UBlog/UserPage?id=<%=cl.get(i).getAuthorId() %>"><%=cl.get(i).getAuthorName() + " " + cl.get(i).getAuthorLastName() %></a></font>
 									<%=cl.get(i).getContent() %>
-									<p class="full_article_comment_date"><%=cl.get(i).getDate() %></p>
+									<p class="full_article_comment_date">
+										<%=cl.get(i).getDate() %>
+										<font class="full_article_comment_like <%=unlikeCommentClass %>" commentid="<%=c.getId() %>"><%=likeCommentValue %></font>
+										<font class="full_article_comment_like_num">
+											<font class="full_article_comment_like_number"><%=cl.get(i).getLikes().size() %></font>
+											bloggers like this
+										</font>
+									</p>
 								</td>
 							</tr>
 						</table>

@@ -5,12 +5,11 @@
 		</caption>
 		<tr>
 			<td id="name_edit_profile">
-				<p id="arrow_dropDown_name"><a href="/UBlog/UserInfo">Giorgi</a></p>
+				<p id="arrow_dropDown_name">Giorgi</p>
 				<p id="arrow_dropDown_edit_profile">Edit Profile</p>
 			</td>
 		</tr>
-			<tr><td id="settings">Settings</td></tr>
-			<tr><td id="sign_out"><a href="/UBlog/Login">Sign Out</a></td></tr>
+			<tr><td id="sign_out">Sign Out</td></tr>
 	</table>
 </div>
 

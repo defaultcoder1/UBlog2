@@ -46,7 +46,16 @@
 					<button type="button" id="open_gallery">Choose from gallery</button>
 					<input type="hidden" name="article_image" id="article_image" />
 					
-					<textarea name="article_tags"></textarea>
+					<select name="article_category" id="category_list">
+						<option value="Art">Art</option>
+						<option value="Business">Business</option>
+						<option value="Education">Education</option>
+						<option value="Science">Science</option>
+						<option value="Society">Society</option>
+						<option value="Sport">Sport</option>
+						<option value="Technology">Technology</option>
+					</select>
+					<textarea name="article_tags" id="article_tags" placeholder="Type space-seperated tags"></textarea>
 				</td>	
 			</tr>
 		</table>
